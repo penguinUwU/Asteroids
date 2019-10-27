@@ -1,6 +1,16 @@
 package model;
 import javafx.scene.shape.Polygon;
 
+/*
+ * This is class for the User (i.e. the rocket ship)
+ * 
+ * The player class goes covers updating the user's position the user moves. 
+ * This is a child class of the GameObject abstract class. 
+ * 
+ * @author Abhay
+ * 
+ * */
+
 public class Player extends GameObject {
 	
 	private static final int PLAYER_MAX_VEL = 100;
@@ -14,9 +24,21 @@ public class Player extends GameObject {
 				(double) (GameModel.SCREEN_HEIGHT/2), (double) (GameModel.SCREEN_WIDTH/2),
 				(double) (GameModel.SCREEN_HEIGHT/2 + 20), (double) (GameModel.SCREEN_WIDTH/2 + 10),
 				(double) (GameModel.SCREEN_HEIGHT/2 + 10), (double) (GameModel.SCREEN_WIDTH/2 + 20),
-		});
+			}
+		);
 	}
-
+	
+	/*
+	 * This is the implementation of the abstract class update from parent class GameObject.
+	 * 
+	 * This updates the position of player based on whether the player moves forward, turns 
+	 * and delta time. 
+	 * @param dt delta-time representing how long the player is moving forward.
+	 * @param moveForward is a boolean which states if the user is moving forward.
+	 * @param turnRight is a boolean which states if the user is turning right. 
+	 * @param turnLeft is a boolean which states if the user is turning left. 
+	 * @return none
+	 * */
 	@Override
 	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft) {
 		if (moveForward) {
@@ -42,7 +64,9 @@ public class Player extends GameObject {
 		}
 		
 	}
-	
+	/*
+	 * @return the rotation angle of the player in radians.
+	 * */
 	public float getRotation() {
 		return PLAYER_ANGLE;
 	}	

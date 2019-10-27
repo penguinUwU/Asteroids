@@ -10,13 +10,6 @@ public class GameModel {
 	private static final int BULLET_VEL = 150;
 	private static final float BULLET_LIFETIME = 3.0f;
 	
-	private static final int L_ASTEROID_MAX_VEL = 20;
-	private static final int L_ASTEROID_MIN_VEL = 10;
-	private static final int M_ASTEROID_MAX_VEL = 30;
-	private static final int M_ASTEROID_MIN_VEL = 20;
-	private static final int S_ASTEROID_MAX_VEL = 40;
-	private static final int S_ASTEROID_MIN_VEL = 30;
-	
 	private static final int NUM_ASTEROIDS = 20;
 	
 	private ArrayList<Bullet> bullets;
