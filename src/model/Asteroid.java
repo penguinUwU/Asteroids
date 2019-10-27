@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import javafx.geometry.Point2D;
 import java.util.Random;
 
 import javafx.scene.shape.Polygon;
@@ -18,36 +19,29 @@ public class Asteroid extends GameObject{
 	private static final int M_ASTEROID_MIN_VEL = 20;
 	private static final int S_ASTEROID_MAX_VEL = 40;
 	private static final int S_ASTEROID_MIN_VEL = 30;
-	private static float ASTEROID_ANGLE = 0;
 	
-	public Asteroid() {
-		super();
-	}
-
-	@Override
-	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft) {
-		ArrayList<Float> directionOfMove = new ArrayList<Float>();
+	public Asteroid(char size) {
+		Random rand = new Random();
 		
-		// Add all the possible moves.
-		Random rand = new Random(); 
-		
-		directionOfMove.add((float) (Math.PI/2));
-		directionOfMove.add((float) (3 * Math.PI/2));
-		directionOfMove.add((float) (0));
-		directionOfMove.add((float)  (Math.PI/3));
-		
-		float dir = directionOfMove.get(rand.nextInt(directionOfMove.size()));
-		
-		if (moveForward) {
-
-			float velX =  (float) (L_ASTEROID_MIN_VEL * dt * java.lang.Math.cos(dir));
-			float velY =  (float) (L_ASTEROID_MIN_VEL * dt * java.lang.Math.sin(dir));
-			
-			((Polygon) this.body).setTranslateX(velX*dt);
-			((Polygon) this.body).setTranslateY(velY*dt);
+		double angle = rand.nextFloat()*2*Math.PI;
+		float vel = 0.0f;
+		if (size == 'L') {
+			vel = L_ASTEROID_MIN_VEL + rand.nextFloat()*(L_ASTEROID_MAX_VEL-L_ASTEROID_MIN_VEL);
+		} else if (size == 'M') {
+			vel = M_ASTEROID_MIN_VEL + rand.nextFloat()*(M_ASTEROID_MAX_VEL-M_ASTEROID_MIN_VEL);
+		} else if (size == 'S') {
+			vel = S_ASTEROID_MIN_VEL + rand.nextFloat()*(S_ASTEROID_MAX_VEL-S_ASTEROID_MIN_VEL);
 		}
 		
+		this.velX = vel*Math.cos(angle);
+		this.velX = vel*Math.sin(angle);
 		
+		this.body = new Polygon();
+		this.body.getPoints().addAll(new Double[]{
+			    -20.0, -20.0,
+			    20.0, -20.0,
+			    -20.0, 20.0,
+			    20.0, 20.0});
+		this.center = new Point2D(0.0, 0.0);
 	}
-	
 }

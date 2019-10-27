@@ -1,4 +1,5 @@
 package model;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
 /*
@@ -9,28 +10,25 @@ import javafx.scene.shape.Polygon;
  * 
  * */
 
-public abstract class GameObject {
+public abstract class GameObject{
 	
-	private float velX;
-	private float velY;
+	protected double velX;
+	protected double velY;
 	protected Polygon body;
-	
-	public GameObject() {
-		this.body = new Polygon();
-	}
+	protected Point2D center;
 	
 	/*
 	 * This is the abstract class update. Implementation varies on game object.
 	 * 
-	 * This updates the position of object based on whether the object wants to
-	 * move forward, and checks if they turn in delta time. 
+	 * This method increments the position of the object by its velocity*dt
 	 * @param dt delta-time representing how long the player is moving forward.
-	 * @param moveForward is a boolean which states if the user is moving forward.
-	 * @param turnRight is a boolean which states if the user is turning right. 
-	 * @param turnLeft is a boolean which states if the user is turning left. 
 	 * @return none
 	 * */
-	public abstract void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft);
+	public void update(float dt) {
+		this.center = this.center.add(this.velX*dt, this.velY*dt);
+		this.body.setTranslateX(this.body.getTranslateX()+this.velX*dt);
+		this.body.setTranslateY(this.body.getTranslateY()+this.velY*dt);
+	}
 		
 	/*
 	 * @return the shape of the object.

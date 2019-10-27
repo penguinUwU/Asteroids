@@ -12,7 +12,7 @@ public class GameModel {
 	
 	private static final int NUM_ASTEROIDS = 20;
 	
-	private ArrayList<Bullet> bullets;
+	//private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
 	private Player player;
 	
@@ -25,7 +25,7 @@ public class GameModel {
 	
 	public GameModel() {
 		for (int i=0; i<NUM_ASTEROIDS; i++) {
-			Asteroid asteroid = new Asteroid();
+			Asteroid asteroid = new Asteroid('L');
 			this.asteroids.add(asteroid);
 			this.addedPolygons.add(asteroid.getBody());
 		}
@@ -47,19 +47,22 @@ public class GameModel {
 	 */
 	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft, boolean shoot) {
 		for (Asteroid asteroid: this.asteroids) {
-			asteroid.update(dt, false, false, false);
+			asteroid.update(dt);
 		}
+		
+		/**
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
 		}
 		this.player.update(dt, moveForward, turnRight, turnLeft);
 		
 		if (shoot) {
-			rotation = this.player.getRotation();
+			double rotation = this.player.getRotation();
 			Bullet bullet = new Bullet(rotation);
 			this.bullets.add(bullet);
 			this.addedPolygons.add(bullet.getBody());
 		}
+		*/
 		
 		this.bulletVSAsteroid();
 		this.playerVSAsteroid();

@@ -1,4 +1,5 @@
 package model;
+import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 
 /*
@@ -16,16 +17,21 @@ public class Player extends GameObject {
 	private static final int PLAYER_MAX_VEL = 100;
 	private static final int PLAYER_ACC = 20;
 	private static final float PLAYER_TURN_SPEED = (float) (2*Math.PI);
-	private static float PLAYER_ANGLE = 0;
+	
+	private double rotation;
 
 	public Player() {
-		super();
+		this.velX = 0.0;
+		this.velY = 0.0;
+		this.body = new Polygon();
 		this.body.getPoints().addAll(new Double[] {
 				(double) (GameModel.SCREEN_HEIGHT/2), (double) (GameModel.SCREEN_WIDTH/2),
 				(double) (GameModel.SCREEN_HEIGHT/2 + 20), (double) (GameModel.SCREEN_WIDTH/2 + 10),
 				(double) (GameModel.SCREEN_HEIGHT/2 + 10), (double) (GameModel.SCREEN_WIDTH/2 + 20),
 			}
 		);
+		this.center = new Point2D(GameModel.SCREEN_HEIGHT/2, GameModel.SCREEN_HEIGHT/2);
+		this.rotation = 0.0;
 	}
 	
 	/*
@@ -39,6 +45,8 @@ public class Player extends GameObject {
 	 * @param turnLeft is a boolean which states if the user is turning left. 
 	 * @return none
 	 * */
+	
+	/**
 	@Override
 	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft) {
 		if (moveForward) {
@@ -64,11 +72,13 @@ public class Player extends GameObject {
 		}
 		
 	}
+	*/
+	
 	/*
 	 * @return the rotation angle of the player in radians.
 	 * */
-	public float getRotation() {
-		return PLAYER_ANGLE;
+	public double getRotation() {
+		return this.rotation;
 	}	
 	
 }
