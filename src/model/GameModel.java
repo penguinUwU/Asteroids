@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import javafx.scene.shape.Polygon;
 
 public class GameModel {
-	private static final int SCREEN_HEIGHT = 500;
-	private static final int SCREEN_WIDTH = 500;
-	
-	private static final int PLAYER_MAX_VEL = 100;
-	private static final int PLAYER_ACC = 20;
+	public static final int SCREEN_HEIGHT = 500;
+	public static final int SCREEN_WIDTH = 500;
 	
 	private static final int BULLET_VEL = 150;
 	private static final float BULLET_LIFETIME = 3.0f;
@@ -57,7 +54,7 @@ public class GameModel {
 	 */
 	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft, boolean shoot) {
 		for (Asteroid asteroid: this.asteroids) {
-			asteroid.update(dt);
+			asteroid.update(dt, false, false, false);
 		}
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
