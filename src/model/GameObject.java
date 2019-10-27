@@ -1,30 +1,41 @@
 package model;
-import com.sun.javafx.geom.Point2D;
 import javafx.scene.shape.Polygon;
+
+/*
+ * This is abstract class for the game objects (e.x. player, asteroid etc.)
+ * 
+ * 
+ * @author Abhay and Mathieu.
+ * 
+ * */
 
 public abstract class GameObject {
 	
-	private float x;
-	private float y;
 	private float velX;
 	private float velY;
-	private Polygon body;
-	private Point2D midPoint;
+	protected Polygon body;
 	
-	public GameObject(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public GameObject() {
+		this.body = new Polygon();
 	}
 	
-	public float[] getPosition() {
-		float[] newPosition = new float[2];
-		newPosition[0] = this.x;
-		newPosition[1] = this.y;
-		return newPosition;
-	}
-	
-	
-	public abstract void update(float detlaTime);
+	/*
+	 * This is the abstract class update. Implementation varies on game object.
+	 * 
+	 * This updates the position of object based on whether the object wants to
+	 * move forward, and checks if they turn in delta time. 
+	 * @param dt delta-time representing how long the player is moving forward.
+	 * @param moveForward is a boolean which states if the user is moving forward.
+	 * @param turnRight is a boolean which states if the user is turning right. 
+	 * @param turnLeft is a boolean which states if the user is turning left. 
+	 * @return none
+	 * */
+	public abstract void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft);
 		
-	
+	/*
+	 * @return the shape of the object.
+	 * */
+	public Polygon getBody() {
+		return this.body;
+	}
 }
