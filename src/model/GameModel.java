@@ -24,6 +24,10 @@ public class GameModel {
 	private boolean gameOver = false;
 	
 	public GameModel() {
+		this.asteroids = new ArrayList<Asteroid>(); 
+		this.addedPolygons = new ArrayList<Polygon>(); 
+		this.removedPolygons = new ArrayList<Polygon>(); 
+		
 		for (int i=0; i<NUM_ASTEROIDS; i++) {
 			Asteroid asteroid = new Asteroid('L');
 			this.asteroids.add(asteroid);

@@ -20,7 +20,7 @@ import model.GameModel;
  */
 
 public class GameView extends Application {
-	GameModel gameModel;
+	GameModel gameModel = new GameModel();
 
 	public void setObservable(GameModel gameModel) {
 		this.gameModel = gameModel;
