@@ -4,25 +4,15 @@ import java.util.ArrayList;
 import javafx.scene.shape.Polygon;
 
 public class GameModel {
-	private static final int SCREEN_HEIGHT = 500;
-	private static final int SCREEN_WIDTH = 500;
-	
-	private static final int PLAYER_MAX_VEL = 100;
-	private static final int PLAYER_ACC = 20;
+	public static final int SCREEN_HEIGHT = 500;
+	public static final int SCREEN_WIDTH = 500;
 	
 	private static final int BULLET_VEL = 150;
 	private static final float BULLET_LIFETIME = 3.0f;
 	
-	private static final int L_ASTEROID_MAX_VEL = 20;
-	private static final int L_ASTEROID_MIN_VEL = 10;
-	private static final int M_ASTEROID_MAX_VEL = 30;
-	private static final int M_ASTEROID_MIN_VEL = 20;
-	private static final int S_ASTEROID_MAX_VEL = 40;
-	private static final int S_ASTEROID_MIN_VEL = 30;
-	
 	private static final int NUM_ASTEROIDS = 20;
 	
-	private ArrayList<Bullet> bullets;
+	//private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
 	private Player player;
 	
@@ -34,8 +24,12 @@ public class GameModel {
 	private boolean gameOver = false;
 	
 	public GameModel() {
+		this.asteroids = new ArrayList<Asteroid>(); 
+		this.addedPolygons = new ArrayList<Polygon>(); 
+		this.removedPolygons = new ArrayList<Polygon>(); 
+		
 		for (int i=0; i<NUM_ASTEROIDS; i++) {
-			Asteroid asteroid = new Asteroid();
+			Asteroid asteroid = new Asteroid('L');
 			this.asteroids.add(asteroid);
 			this.addedPolygons.add(asteroid.getBody());
 		}
@@ -59,17 +53,20 @@ public class GameModel {
 		for (Asteroid asteroid: this.asteroids) {
 			asteroid.update(dt);
 		}
+		
+		/**
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
 		}
 		this.player.update(dt, moveForward, turnRight, turnLeft);
 		
 		if (shoot) {
-			rotation = this.player.getRotation();
+			double rotation = this.player.getRotation();
 			Bullet bullet = new Bullet(rotation);
 			this.bullets.add(bullet);
 			this.addedPolygons.add(bullet.getBody());
 		}
+		*/
 		
 		this.bulletVSAsteroid();
 		this.playerVSAsteroid();
