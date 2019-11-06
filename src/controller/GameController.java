@@ -57,11 +57,10 @@ public class GameController extends Application {
 		// reset all values
 		resetGame();
 		
-		// set title of stage
+		// create the Label and Scene
 		stage.setTitle("Space Rocks");
-		
-		// create scene using gameview and gamemodel
 		Scene scene = new Scene(gameView.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		stage.setScene(scene);
 
 		
 		// set action of key presses
