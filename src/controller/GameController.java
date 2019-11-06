@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import view.GameView;
+import model.GameModel;
 
 public class GameController extends Application {
 	
@@ -46,7 +48,10 @@ public class GameController extends Application {
 	public void start(Stage stage) {
 		// Create the Label and Scene
 		Label label = new Label("Space Rocks");
-		Scene scene = new Scene(createParent());
+		GameView view = new GameView();
+		Scene scene = new Scene(view.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		stage.setScene(scene);
+		stage.show();
 		
 		// read key presses on the scene
 		scene.setOnKeyTyped(new EventHandler<KeyEvent>() {
