@@ -27,6 +27,7 @@ import model.GameModel;
 
 public class GameView extends Application {
 	GameModel gameModel = new GameModel();
+	public Pane root = new Pane();
 
 	public void setObservable(GameModel gameModel) {
 		this.gameModel = gameModel;
@@ -46,14 +47,13 @@ public class GameView extends Application {
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("Space Rocks");
 
-		Pane root = new Pane();
 		//add background color
-		BackgroundFill myBF = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
-		root.setBackground(new Background(myBF));
+		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
+		this.root.setBackground(new Background(back));
 
 		// root.getChildren().add();
 		// uncomment ^^^ after figuring out the adding procedure for game objects
-		primaryStage.setScene(new Scene(root, GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH));
+		primaryStage.setScene(new Scene(this.root, GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH));
 		
 		// retrieving polygon from GameModel
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
@@ -61,14 +61,25 @@ public class GameView extends Application {
 		
 		//Iterating through addedPolygon and adding them to screen 
 		for (int counter = 0; counter < addedPolygon.size(); counter++) {
-			root.getChildren().add(addedPolygon.get(counter));
+			this.root.getChildren().add(addedPolygon.get(counter));
 		}
 		
 		primaryStage.show();
 	}
 
 	public void update() {
-		
+		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
+		ArrayList<Polygon> removedPolygon = new ArrayList<Polygon>();
+		addedPolygon = gameModel.getAddedPolygons();
+		removedPolygon = gameModel.getRemovedPolygons();
+		//Iterating through addedPolygon and adding them to screen 
+		for (int counter = 0; counter < addedPolygon.size(); counter++) {
+			this.root.getChildren().add(addedPolygon.get(counter));
+		}
+		//Iterating through removedPolygon and removing them from screen
+		for (int counter = 0; counter < removedPolygon.size(); counter++) {
+			this.root.getChildren().remove(removedPolygon.get(counter));
+		}
 
 	}
 
