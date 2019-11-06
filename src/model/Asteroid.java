@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import javafx.geometry.Point2D;
 import java.util.Random;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 /*
  * This is class for the Asteroids (i.e. all sizes for now)
@@ -37,6 +38,8 @@ public class Asteroid extends GameObject{
 		this.velX = vel*Math.sin(angle);
 		
 		this.body = new Polygon();
+		//set color of asteroid
+		this.body.setStroke(Color.WHITE);
 		this.body.getPoints().addAll(new Double[]{
 			    -20.0, -20.0,
 			    20.0, -20.0,
