@@ -51,6 +51,10 @@ public class GameController extends Application {
 		GameView view = new GameView();
 		Scene scene = new Scene(view.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
 		stage.setScene(scene);
+		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
+		stage.setMinWidth(GameModel.SCREEN_WIDTH);
 		stage.show();
 		
 		// read key presses on the scene
@@ -59,6 +63,7 @@ public class GameController extends Application {
 				readEvent(keyEvent);
 			}
 		});
+		
 	}
 	
 	/**
