@@ -7,14 +7,47 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import model.GameModel;
+import view.GameView;
 
 public class GameController extends Application {
 	
-    private HashMap<String, String> controls = new HashMap<>();
-	private HashMap<String, Boolean> inputs = new HashMap<>();
+	private GameView gameView;
+	private GameModel gameModel;
+	
+    private HashMap<KeyCode, String> controls;
+	private HashMap<String, Boolean> inputs;
 	private double pollTime = 0;
 	private long previousTime = 0;
+	
+	/**
+	 * resets all game values to its default values
+	 */
+	public void resetGame() {
+		// new GameView and GameModel objects
+		GameView gameView = new GameView();
+		GameModel gameModel = new GameModel();
+		
+		// bind keys to actions
+		controls = new HashMap<>();
+		controls.put(KeyCode.W, "moveForward");
+		controls.put(KeyCode.D, "turnRight");
+		controls.put(KeyCode.A, "turnLeft");
+		controls.put(KeyCode.SPACE, "shoot");
+		
+		// set default action states
+		inputs = new HashMap<>();
+		inputs.put("moveForward", false);
+		inputs.put("turnRight", false);
+		inputs.put("turnLeft", false);
+		inputs.put("shoot", false);
+		
+		// reset time variables
+		double pollTime = 0;
+		long previousTime = 0;
+	}
 	
 	/**
 	 * starts the game
@@ -27,31 +60,25 @@ public class GameController extends Application {
 		// set title of stage
 		stage.setTitle("Space Rocks");
 		
-		// create and use group for the scene and stage
-		Group root = new Group();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
+		// create scene using gameview and gamemodel
+		Scene scene = new Scene(gameView.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+
 		
-		// create and use canvas
-		Canvas canvas = new Canvas(600, 800);
-        root.getChildren().add(canvas);
-		
-        
 		// set action of key presses
 		scene.setOnKeyPressed(e -> {
-			String key = e.getCharacter();
+			KeyCode key = e.getCode();
 			
 			if (controls.containsKey(key)) {
-				inputs.put(key, true);
+				inputs.put(controls.get(key), true);
 			}
 		});
 		
 		// set action of key releases
 		scene.setOnKeyReleased(e -> {
-			String key = e.getCharacter();
+			KeyCode key = e.getCode();
 			
 			if (controls.containsKey(key)) {
-				inputs.put(key, false);
+				inputs.put(controls.get(key), false);
 			}
 		});
 		
@@ -61,11 +88,12 @@ public class GameController extends Application {
 			@Override
 			public void handle(long currentTime) {
 				// calculate time since last update
-		        pollTime = (currentTime - previousTime); // / 1000000000.0;
+		        pollTime = (currentTime - previousTime);
 		        previousTime = currentTime;
 		        
-		        // update objects
-		        // TODO: update stuffs
+		        // updates game model, then game view
+		        gameModel.update(pollTime, inputs);
+		        gameView.update();
 			}
 		};
 		
@@ -78,25 +106,6 @@ public class GameController extends Application {
 		
 		// show scene
 		stage.show();
-	}
-	
-	/**
-	 * resets all game values to its default values
-	 */
-	public void resetGame() {
-		// bind keys to actions
-		controls.put("w", "moveForward");
-		controls.put("d", "turnRight");
-		controls.put("a", "turnLeft");
-		controls.put(" ", "shoot");
-		
-		// set default action states
-		inputs.put("moveForward", false);
-		inputs.put("turnRight", false);
-		inputs.put("turnLeft", false);
-		inputs.put("shoot", false);
-		
-		// TODO: instantiate game objects
 	}
 	
 	/**
