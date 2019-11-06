@@ -5,13 +5,19 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+
 import model.GameModel;
 
 /*
@@ -41,6 +47,9 @@ public class GameView extends Application {
 		primaryStage.setTitle("Space Rocks");
 
 		Pane root = new Pane();
+		//add background color
+		BackgroundFill myBF = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
+		root.setBackground(new Background(myBF));
 
 		// root.getChildren().add();
 		// uncomment ^^^ after figuring out the adding procedure for game objects

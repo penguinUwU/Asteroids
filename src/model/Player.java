@@ -1,6 +1,7 @@
 package model;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
+import javafx.scene.paint.Color;
 
 /*
  * This is class for the User (i.e. the rocket ship)
@@ -30,6 +31,10 @@ public class Player extends GameObject {
 				(double) (GameModel.SCREEN_HEIGHT/2 + 10), (double) (GameModel.SCREEN_WIDTH/2 + 20),
 			}
 		);
+		
+		//Added border color to player
+		this.body.setStroke(Color.WHITE);
+		
 		this.center = new Point2D(GameModel.SCREEN_HEIGHT/2, GameModel.SCREEN_HEIGHT/2);
 		this.rotation = 0.0;
 	}
