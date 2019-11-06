@@ -61,6 +61,11 @@ public class GameController extends Application {
 		stage.setTitle("Space Rocks");
 		Scene scene = new Scene(gameView.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
 		stage.setScene(scene);
+		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
+		stage.setMinWidth(GameModel.SCREEN_WIDTH);
+		stage.show();
 
 		// set action of key presses
 		scene.setOnKeyPressed(e -> {
