@@ -9,11 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import model.GameModel;
 import view.GameView;
-=======
->>>>>>> parent of 8a483d9... Merge branch 'master' of https://github.com/penguinUwU/Space-Rocks
 
 public class GameController extends Application {
 	
@@ -57,7 +54,6 @@ public class GameController extends Application {
 	 */
 	@Override
 	public void start(Stage stage) {
-<<<<<<< HEAD
 		// reset all values
 		resetGame();
 		
@@ -66,12 +62,6 @@ public class GameController extends Application {
 		Scene scene = new Scene(gameView.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
 		stage.setScene(scene);
 
-=======
-		// Create the Label and Scene
-		Label label = new Label("Space Rocks");
-		Scene scene = new Scene(createParent());
->>>>>>> parent of 8a483d9... Merge branch 'master' of https://github.com/penguinUwU/Space-Rocks
-		
 		// set action of key presses
 		scene.setOnKeyPressed(e -> {
 			KeyCode key = e.getCode();
