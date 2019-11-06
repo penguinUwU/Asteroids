@@ -25,7 +25,7 @@ import model.GameModel;
  * Class that creates the game window
  */
 
-public class GameView extends Pane {
+public class GameView {
 	GameModel gameModel = new GameModel();
 	public Pane root = new Pane();
 
@@ -37,7 +37,7 @@ public class GameView extends Pane {
 		launch(args);
 	}*/
 
-	public Parent start() {
+	public Parent getRoot() {
 
 		//add background color
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));

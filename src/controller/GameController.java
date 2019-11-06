@@ -27,8 +27,8 @@ public class GameController extends Application {
 	 */
 	public void resetGame() {
 		// new GameView and GameModel objects
-		GameView gameView = new GameView();
-		GameModel gameModel = new GameModel();
+		gameView = new GameView();
+		gameModel = new GameModel();
 		
 		// bind keys to actions
 		controls = new HashMap<>();
@@ -45,8 +45,8 @@ public class GameController extends Application {
 		inputs.put("shoot", false);
 		
 		// reset time variables
-		double pollTime = 0;
-		long previousTime = 0;
+		pollTime = 0;
+		previousTime = 0;
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class GameController extends Application {
 		
 		// create the Label and Scene
 		stage.setTitle("Space Rocks");
-		Scene scene = new Scene(gameView.start(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		Scene scene = new Scene(this.gameView.getRoot(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
 		stage.setScene(scene);
 		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
 		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
@@ -95,7 +95,7 @@ public class GameController extends Application {
 		        previousTime = currentTime;
 		        
 		        // updates game model, then game view
-		        gameModel.update(pollTime, inputs);
+		        //gameModel.update(pollTime, inputs);
 		        gameView.update();
 			}
 		};
