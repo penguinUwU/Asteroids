@@ -26,10 +26,28 @@ public abstract class GameObject{
 	 * */
 	public void update(float dt) {
 		this.center = this.center.add(this.velX*dt, this.velY*dt);
-		this.body.setTranslateX(this.body.getTranslateX()+this.velX*dt);
-		this.body.setTranslateY(this.body.getTranslateY()+this.velY*dt);
+		this.translate(this.velX*dt, this.velY*dt);
+		this.wrap();
 	}
-		
+	
+	private void translate(double dx, double dy) {
+		this.center = this.center.add(dx, dy);
+		this.body.setTranslateX(this.body.getTranslateX()+dx);
+		this.body.setTranslateY(this.body.getTranslateY()+dy);
+	}
+	
+	private void wrap() {
+		if (this.center.getX() > GameModel.SCREEN_WIDTH) {
+			this.translate(-GameModel.SCREEN_WIDTH, 0);
+		} else if (this.center.getX() < 0){
+			this.translate(GameModel.SCREEN_WIDTH, 0);
+		} else if (this.center.getY() > GameModel.SCREEN_HEIGHT) {
+			this.translate(0, -GameModel.SCREEN_HEIGHT);
+		} else if (this.center.getY() < 0) {
+			this.translate(0, GameModel.SCREEN_HEIGHT);
+		}
+	}
+	
 	/*
 	 * @return the shape of the object.
 	 * */
@@ -37,3 +55,4 @@ public abstract class GameObject{
 		return this.body;
 	}
 }
+
