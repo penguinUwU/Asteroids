@@ -45,16 +45,16 @@ public class GameView {
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
 		this.root.setBackground(new Background(back));
 		
-		Label score = new Label("Test");
-		score.setTextFill(Color.WHITE);
-		this.root.getChildren().add(score);
-		
-		
 		Label lives = new Label("Lives:");
 		lives.setTextFill(Color.WHITE);
 		Image life = new Image(getClass().getResourceAsStream("life.png"));
 		lives.setGraphic(new ImageView(life));
 		this.root.getChildren().add(lives);
+		
+		Label score = new Label("Test");
+		score.setTextFill(Color.WHITE);
+		this.root.getChildren().add(score);
+		
 		
 		// retrieving polygon from GameModel
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
