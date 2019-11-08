@@ -9,7 +9,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -43,6 +45,17 @@ public class GameView {
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
 		this.root.setBackground(new Background(back));
 		
+		Label score = new Label("Test");
+		score.setTextFill(Color.WHITE);
+		this.root.getChildren().add(score);
+		
+		
+		Label lives = new Label("Lives:");
+		lives.setTextFill(Color.WHITE);
+		Image life = new Image(getClass().getResourceAsStream("life.png"));
+		lives.setGraphic(new ImageView(life));
+		this.root.getChildren().add(lives);
+		
 		// retrieving polygon from GameModel
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
 		addedPolygon = gameModel.getAddedPolygons();
@@ -53,7 +66,7 @@ public class GameView {
 		}
 		this.root.maxHeight(GameModel.SCREEN_HEIGHT);
 		this.root.maxWidth(GameModel.SCREEN_WIDTH);
-		
+		//add score, life, and time labels, and reset button
 		//primaryStage.show();
 		return this.root;
 	}
