@@ -25,10 +25,14 @@ public abstract class GameObject{
 	 * @return none
 	 * */
 	public void update(double dt) {
+		System.out.println("dt " + dt);
 		this.center = this.center.add(this.velX*dt, this.velY*dt);
 		this.translate(this.velX*dt, this.velY*dt);
 		this.wrap();
-		System.out.println(this.body.getTranslateX());
+		System.out.println("x translate" + this.body.getTranslateX());
+		System.out.println("y translate" + this.body.getTranslateY());
+		System.out.println("x pos" + this.center.getX());
+		System.out.println("y pos" + this.center.getX());
 	}
 	
 	private void translate(double dx, double dy) {

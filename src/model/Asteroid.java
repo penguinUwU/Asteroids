@@ -25,19 +25,18 @@ public class Asteroid extends GameObject{
 		
 		Random rand = new Random();
 
-		double angle = rand.nextFloat()*2*Math.PI;
-		float vel = 0.0f;
+		double angle = rand.nextDouble()*2*Math.PI;
+		double vel = 0.0d;
 		if (size == 'L') {
-			vel = L_ASTEROID_MIN_VEL + rand.nextFloat()*(L_ASTEROID_MAX_VEL-L_ASTEROID_MIN_VEL);
+			vel = L_ASTEROID_MIN_VEL + rand.nextDouble()*(L_ASTEROID_MAX_VEL-L_ASTEROID_MIN_VEL);
 		} else if (size == 'M') {
-			vel = M_ASTEROID_MIN_VEL + rand.nextFloat()*(M_ASTEROID_MAX_VEL-M_ASTEROID_MIN_VEL);
+			vel = M_ASTEROID_MIN_VEL + rand.nextDouble()*(M_ASTEROID_MAX_VEL-M_ASTEROID_MIN_VEL);
 		} else if (size == 'S') {
-			vel = S_ASTEROID_MIN_VEL + rand.nextFloat()*(S_ASTEROID_MAX_VEL-S_ASTEROID_MIN_VEL);
+			vel = S_ASTEROID_MIN_VEL + rand.nextDouble()*(S_ASTEROID_MAX_VEL-S_ASTEROID_MIN_VEL);
 		}
 		
 		this.velX = vel*Math.cos(angle);
 		this.velY = vel*Math.sin(angle);
-		System.out.println("velX" + this.velX);
 		
 		this.body = new Polygon();
 		//set color of asteroid
@@ -47,8 +46,8 @@ public class Asteroid extends GameObject{
 			    20.0, -20.0,
 			    -20.0, 20.0,
 			    20.0, 20.0});
-		this.body.setTranslateX(0);
-		this.body.setTranslateY(0);
-		this.center = new Point2D(0.0, 0.0);
+		this.body.setTranslateX(0.0d);
+		this.body.setTranslateY(0.0d);
+		this.center = new Point2D(0.0d, 0.0d);
 	}
 }

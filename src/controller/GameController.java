@@ -20,8 +20,8 @@ public class GameController extends Application {
 	
     private HashMap<KeyCode, String> controls;
 	private HashMap<String, Boolean> inputs;
-	private double pollTime = 0;
-	private double previousTime = 0;
+	private double pollTime;
+	private double previousTime;
 	
 	/**
 	 * resets all game values to its default values
@@ -92,17 +92,16 @@ public class GameController extends Application {
 		AnimationTimer gameLoop = new AnimationTimer() {
 			@Override
 			public void handle(long currentTime) {
-				// calculate time since last update
+				//check if previousTime has not been set
+				if (previousTime == 0) {
+					previousTime = ((double)currentTime) / 1000000000;
+				}
 		        pollTime = ((double)currentTime) / 1000000000 - previousTime;
 		        previousTime = ((double)currentTime) / 1000000000;
 		        
 		        gameModel.update(pollTime, inputs);
 			}
 		};
-		
-		// set up timers
-		final long startTime = System.nanoTime();
-		previousTime = startTime;
 		
 		// start game loop
 		gameLoop.start();
