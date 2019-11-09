@@ -21,7 +21,7 @@ public class GameController extends Application {
     private HashMap<KeyCode, String> controls;
 	private HashMap<String, Boolean> inputs;
 	private double pollTime = 0;
-	private long previousTime = 0;
+	private double previousTime = 0;
 	
 	/**
 	 * resets all game values to its default values
@@ -93,9 +93,8 @@ public class GameController extends Application {
 			@Override
 			public void handle(long currentTime) {
 				// calculate time since last update
-		        pollTime = (TimeUnit.SECONDS.convert(currentTime, TimeUnit.NANOSECONDS) - previousTime);
-		        previousTime = TimeUnit.SECONDS.convert(currentTime, TimeUnit.NANOSECONDS);
-		        System.out.println("pollTime" + pollTime);
+		        pollTime = ((double)currentTime) / 1000000000 - previousTime;
+		        previousTime = ((double)currentTime) / 1000000000;
 		        
 		        gameModel.update(pollTime, inputs);
 			}
