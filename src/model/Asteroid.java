@@ -44,8 +44,8 @@ public class Asteroid extends GameObject{
 		this.body.getPoints().addAll(new Double[]{
 			    -20.0, -20.0,
 			    20.0, -20.0,
-			    -20.0, 20.0,
-			    20.0, 20.0});
+			    20.0, 20.0,
+			    -20.0, 20.0});
 		this.body.setTranslateX(0.0d);
 		this.body.setTranslateY(0.0d);
 		this.center = new Point2D(0.0d, 0.0d);
