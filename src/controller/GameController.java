@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -29,6 +30,7 @@ public class GameController extends Application {
 		// new GameView and GameModel objects
 		gameView = new GameView();
 		gameModel = new GameModel();
+		gameModel.addObserver(gameView);
 		
 		// bind keys to actions
 		controls = new HashMap<>();
@@ -91,12 +93,11 @@ public class GameController extends Application {
 			@Override
 			public void handle(long currentTime) {
 				// calculate time since last update
-		        pollTime = (currentTime - previousTime);
-		        previousTime = currentTime;
+		        pollTime = (TimeUnit.SECONDS.convert(currentTime, TimeUnit.NANOSECONDS) - previousTime);
+		        previousTime = TimeUnit.SECONDS.convert(currentTime, TimeUnit.NANOSECONDS);
+		        System.out.println("pollTime" + pollTime);
 		        
-		        // updates game model, then game view
-		        //gameModel.update(pollTime, inputs);
-		        gameView.update();
+		        gameModel.update(pollTime, inputs);
 			}
 		};
 		

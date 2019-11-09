@@ -22,8 +22,9 @@ public class Asteroid extends GameObject{
 	private static final int S_ASTEROID_MIN_VEL = 30;
 	
 	public Asteroid(char size) {
-		Random rand = new Random();
 		
+		Random rand = new Random();
+
 		double angle = rand.nextFloat()*2*Math.PI;
 		float vel = 0.0f;
 		if (size == 'L') {
@@ -35,7 +36,8 @@ public class Asteroid extends GameObject{
 		}
 		
 		this.velX = vel*Math.cos(angle);
-		this.velX = vel*Math.sin(angle);
+		this.velY = vel*Math.sin(angle);
+		System.out.println("velX" + this.velX);
 		
 		this.body = new Polygon();
 		//set color of asteroid
@@ -45,6 +47,8 @@ public class Asteroid extends GameObject{
 			    20.0, -20.0,
 			    -20.0, 20.0,
 			    20.0, 20.0});
+		this.body.setTranslateX(0);
+		this.body.setTranslateY(0);
 		this.center = new Point2D(0.0, 0.0);
 	}
 }

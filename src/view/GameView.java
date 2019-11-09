@@ -1,6 +1,8 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -25,32 +27,14 @@ import model.GameModel;
  * Class that creates the game window
  */
 
-public class GameView {
-	GameModel gameModel = new GameModel();
+public class GameView implements Observer{
 	public Pane root = new Pane();
-
-	public void setObservable(GameModel gameModel) {
-		this.gameModel = gameModel;
-	}
-
-	/*public static void main(String[] args) {
-		launch(args);
-	}*/
 
 	public Parent getRoot() {
 
 		//add background color
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
 		this.root.setBackground(new Background(back));
-		
-		// retrieving polygon from GameModel
-		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
-		addedPolygon = gameModel.getAddedPolygons();
-		
-		//Iterating through addedPolygon and adding them to screen 
-		for (int counter = 0; counter < addedPolygon.size(); counter++) {
-			this.root.getChildren().add(addedPolygon.get(counter));
-		}
 		this.root.maxHeight(GameModel.SCREEN_HEIGHT);
 		this.root.maxWidth(GameModel.SCREEN_WIDTH);
 		
@@ -58,13 +42,12 @@ public class GameView {
 		return this.root;
 	}
 
-	public void update() {
+	public void update(Observable o, Object args) {
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
 		ArrayList<Polygon> removedPolygon = new ArrayList<Polygon>();
 		
-		addedPolygon = gameModel.getAddedPolygons();
-		removedPolygon = gameModel.getRemovedPolygons();
-		
+		addedPolygon = ((GameModel)o).getAddedPolygons();
+		removedPolygon = ((GameModel)o).getRemovedPolygons();
 		//Iterating through addedPolygon and adding them to screen 
 		for (int counter = 0; counter < addedPolygon.size(); counter++) {
 			this.root.getChildren().add(addedPolygon.get(counter));

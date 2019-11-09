@@ -1,16 +1,19 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Observable;
+
 import javafx.scene.shape.Polygon;
 
-public class GameModel {
+public class GameModel extends Observable{
 	public static final int SCREEN_HEIGHT = 500;
 	public static final int SCREEN_WIDTH = 500;
 	
 	private static final int BULLET_VEL = 150;
 	private static final float BULLET_LIFETIME = 3.0f;
 	
-	private static final int NUM_ASTEROIDS = 20;
+	private static final int NUM_ASTEROIDS = 1;
 	
 	//private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
@@ -49,7 +52,7 @@ public class GameModel {
 	 * @param turnLeft true if 'a' key is being pressed
 	 * @param shoot true if the space bar is being pressed
 	 */
-	public void update(float dt, boolean moveForward, boolean turnRight, boolean turnLeft, boolean shoot) {
+	public void update(double dt, HashMap<String, Boolean> inputs) {
 		for (Asteroid asteroid: this.asteroids) {
 			asteroid.update(dt);
 		}
@@ -70,6 +73,8 @@ public class GameModel {
 		
 		this.bulletVSAsteroid();
 		this.playerVSAsteroid();
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	private void bulletVSAsteroid(){

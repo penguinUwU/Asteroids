@@ -16,7 +16,7 @@ public abstract class GameObject{
 	protected double velY;
 	protected Polygon body;
 	protected Point2D center;
-	
+
 	/*
 	 * This is the abstract class update. Implementation varies on game object.
 	 * 
@@ -24,10 +24,11 @@ public abstract class GameObject{
 	 * @param dt delta-time representing how long the player is moving forward.
 	 * @return none
 	 * */
-	public void update(float dt) {
+	public void update(double dt) {
 		this.center = this.center.add(this.velX*dt, this.velY*dt);
 		this.translate(this.velX*dt, this.velY*dt);
 		this.wrap();
+		System.out.println(this.body.getTranslateX());
 	}
 	
 	private void translate(double dx, double dy) {
