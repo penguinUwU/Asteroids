@@ -13,7 +13,7 @@ public class GameModel extends Observable{
 	private static final int BULLET_VEL = 150;
 	private static final float BULLET_LIFETIME = 3.0f;
 	
-	private static final int NUM_ASTEROIDS = 20;
+	private static final int NUM_ASTEROIDS = 10;
 	
 	//private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
@@ -23,7 +23,7 @@ public class GameModel extends Observable{
 	private ArrayList<Polygon> removedPolygons;
 	
 	private int score = 0;
-	private int lives = 0;
+	private int lives = 3;
 	private boolean gameOver = false;
 	
 	public GameModel() {
