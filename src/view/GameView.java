@@ -45,15 +45,30 @@ public class GameView {
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
 		this.root.setBackground(new Background(back));
 		
+		//add Lives Label
 		Label lives = new Label("Lives:");
 		lives.setTextFill(Color.WHITE);
-		Image life = new Image(getClass().getResourceAsStream("life.png"));
+		
+		//add Life Images to show remaining life for user
+		Image life = new Image(getClass().getResourceAsStream("oneLife.png"));
 		lives.setGraphic(new ImageView(life));
 		this.root.getChildren().add(lives);
 		
+		//add Score Label to show score
 		Label score = new Label("Test");
 		score.setTextFill(Color.WHITE);
 		this.root.getChildren().add(score);
+		
+		//add Time Label to show the on-going time of the game 
+		Label time=new Label("Time");
+		time.setTextFill(Color.WHITE);
+		this.root.getChildren().add(time);
+		
+		//add Button for Reset
+		Button reset = new Button("Reset");
+		reset.setTextFill(Color.WHITE);
+		this.root.getChildren().add(reset);
+		
 		
 		
 		// retrieving polygon from GameModel
@@ -72,9 +87,13 @@ public class GameView {
 	}
 
 	public void update() {
+		
+		//addedPolygon and removedPolygon keep tracks of the asteroid that are added by the Model
+		//or removed by user's action during the game
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
 		ArrayList<Polygon> removedPolygon = new ArrayList<Polygon>();
 		
+		//pass reference of the ArrayList from Model to local variable
 		addedPolygon = gameModel.getAddedPolygons();
 		removedPolygon = gameModel.getRemovedPolygons();
 		
@@ -89,5 +108,11 @@ public class GameView {
 		}
 
 	}
+	
+	
+	
+	
+	
+	//
 
 }
