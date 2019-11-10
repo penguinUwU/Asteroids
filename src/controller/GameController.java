@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.GameModel;
 import view.GameView;
@@ -60,11 +61,9 @@ public class GameController extends Application {
 		// create the Label and Scene
 		stage.setTitle("Space Rocks");
 		Scene scene = new Scene(this.gameView.getRoot(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		scene.setFill(Color.BLACK);
 		stage.setScene(scene);
-		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
-		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
-		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
-		stage.setMinWidth(GameModel.SCREEN_WIDTH);
+		stage.setResizable(false);
 		stage.show();
 
 		// set action of key presses

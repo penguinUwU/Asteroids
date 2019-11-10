@@ -1,12 +1,14 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,7 +31,9 @@ import model.GameModel;
 
 public class GameView {
 	GameModel gameModel = new GameModel();
-	public Pane root = new Pane();
+	public Group root = new Group();
+	public Pane screen = new Pane();
+	ToolBar bar = new ToolBar();
 
 	public void setObservable(GameModel gameModel) {
 		this.gameModel = gameModel;
@@ -43,7 +47,8 @@ public class GameView {
 
 		//add background color
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
-		this.root.setBackground(new Background(back));
+<<<<<<< HEAD
+		this.screen.setBackground(new Background(back));
 		
 		//add Lives Label
 		Label lives = new Label("Lives:");
@@ -54,11 +59,29 @@ public class GameView {
 		lives.setGraphic(new ImageView(life));
 		this.root.getChildren().add(lives);
 		
-		//add Score Label to show score
-		Label score = new Label("Test");
-		score.setTextFill(Color.WHITE);
-		this.root.getChildren().add(score);
 		
+		
+=======
+		
+		Label lifeImage = new Label();
+		lifeImage.setId("lives");
+		
+		//add Score Label to show score
+		Label score = new Label("Score: ");
+>>>>>>> e471511b79bcf29762361676259540b8b7aa2b11
+		score.setTextFill(Color.WHITE);
+		Label scoreNum = new Label("0");
+		scoreNum.setTextFill(Color.WHITE);
+		scoreNum.setId("score");
+		
+		
+		Label timeNum = new Label("0");
+		timeNum.setTextFill(Color.WHITE);	
+		timeNum.setId("time");
+		
+		
+		
+<<<<<<< HEAD
 		//add Time Label to show the on-going time of the game 
 		Label time=new Label("Time");
 		time.setTextFill(Color.WHITE);
@@ -70,6 +93,14 @@ public class GameView {
 		this.root.getChildren().add(reset);
 		
 		
+=======
+		Label separator1 = new Label("            ");
+		Label separator2 = new Label("            ");
+		Label separator3 = new Label("            ");
+		
+		bar.setBackground(new Background(back));
+		bar.getItems().addAll(lives, lifeImage, separator1, score, scoreNum, separator2, time, timeNum, separator3, reset);
+>>>>>>> e471511b79bcf29762361676259540b8b7aa2b11
 		
 		// retrieving polygon from GameModel
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
@@ -77,13 +108,17 @@ public class GameView {
 		
 		//Iterating through addedPolygon and adding them to screen 
 		for (int counter = 0; counter < addedPolygon.size(); counter++) {
-			this.root.getChildren().add(addedPolygon.get(counter));
+			screen.getChildren().add(addedPolygon.get(counter));
 		}
-		this.root.maxHeight(GameModel.SCREEN_HEIGHT);
-		this.root.maxWidth(GameModel.SCREEN_WIDTH);
+		screen.maxHeight(GameModel.SCREEN_HEIGHT);
+		screen.maxWidth(GameModel.SCREEN_WIDTH);
+		screen.minHeight(GameModel.SCREEN_HEIGHT);
+		screen.minWidth(GameModel.SCREEN_WIDTH);
+		screen.setBackground(new Background(back));
 		//add score, life, and time labels, and reset button
 		//primaryStage.show();
-		return this.root;
+		root.getChildren().addAll(screen, bar);
+		return root;
 	}
 
 	public void update() {
@@ -99,12 +134,24 @@ public class GameView {
 		
 		//Iterating through addedPolygon and adding them to screen 
 		for (int counter = 0; counter < addedPolygon.size(); counter++) {
-			this.root.getChildren().add(addedPolygon.get(counter));
+			screen.getChildren().add(addedPolygon.get(counter));
 		}
 		
 		//Iterating through removedPolygon and removing them from screen
 		for (int counter = 0; counter < removedPolygon.size(); counter++) {
-			this.root.getChildren().remove(removedPolygon.get(counter));
+			screen.getChildren().remove(removedPolygon.get(counter));
+		}
+		
+		for(Node child : bar.getItems()) {
+			if(child.getId() == "score") {
+				
+			}
+			else if(child.getId() == "lives") {
+				
+			}
+			else if(child.getId() == "time") {
+				
+			}
 		}
 
 	}
