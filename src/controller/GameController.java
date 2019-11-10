@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.GameModel;
 import view.GameView;
@@ -17,6 +18,8 @@ public class GameController extends Application {
 	
 	private GameView gameView;
 	private GameModel gameModel;
+	private Scene scene;
+	private Stage stage;
 	
     private HashMap<KeyCode, String> controls;
 	private HashMap<String, Boolean> inputs;
@@ -27,10 +30,23 @@ public class GameController extends Application {
 	 * resets all game values to its default values
 	 */
 	public void resetGame() {
+		//NEEDS WORK, need to re-attach the scene and gameview
 		// new GameView and GameModel objects
 		gameView = new GameView();
 		gameModel = new GameModel();
 		gameModel.addObserver(gameView);
+		
+		// create the Label and Scene
+		stage.setTitle("Space Rocks");
+		scene = new Scene(gameView.getRoot(this), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		scene.setFill(Color.BLACK);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
+		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
+		stage.setMinWidth(GameModel.SCREEN_WIDTH);
+		stage.show();
 		
 		// bind keys to actions
 		controls = new HashMap<>();
@@ -57,17 +73,8 @@ public class GameController extends Application {
 	@Override
 	public void start(Stage stage) {
 		// reset all values
+		this.stage = stage;
 		resetGame();
-		
-		// create the Label and Scene
-		stage.setTitle("Space Rocks");
-		Scene scene = new Scene(this.gameView.getRoot(), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
-		stage.setScene(scene);
-		stage.setMaxHeight(GameModel.SCREEN_HEIGHT);
-		stage.setMinHeight(GameModel.SCREEN_HEIGHT);
-		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
-		stage.setMinWidth(GameModel.SCREEN_WIDTH);
-		stage.show();
 
 		// set action of key presses
 		scene.setOnKeyPressed(e -> {
