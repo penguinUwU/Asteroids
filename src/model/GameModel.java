@@ -7,8 +7,6 @@ public class GameModel {
 	public static final int SCREEN_HEIGHT = 500;
 	public static final int SCREEN_WIDTH = 500;
 	
-	private static final float BULLET_LIFETIME = 3.0f;
-	
 	private static final int NUM_ASTEROIDS = 20;
 	
 	//private ArrayList<Bullet> bullets;
