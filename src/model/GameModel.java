@@ -10,9 +10,6 @@ public class GameModel extends Observable{
 	public static final int SCREEN_HEIGHT = 500;
 	public static final int SCREEN_WIDTH = 500;
 	
-	private static final int BULLET_VEL = 150;
-	private static final float BULLET_LIFETIME = 3.0f;
-	
 	private static final int NUM_ASTEROIDS = 10;
 	
 	//private ArrayList<Bullet> bullets;

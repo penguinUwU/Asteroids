@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 public class ButtonPressEventHandler implements EventHandler<ActionEvent>{
 	GameController controller;
 	
-	
 	/*
 	 * Handler constructor
 	 * @param othello: the othello game that we want to have attached
