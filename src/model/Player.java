@@ -31,10 +31,11 @@ public class Player extends GameObject {
 		
 		//Added border color to player
 		this.body.setStroke(Color.WHITE);
+		this.body.setFill(Color.TRANSPARENT);
+
 		this.body.setTranslateX(GameModel.SCREEN_WIDTH/2);
 		this.body.setTranslateY(GameModel.SCREEN_HEIGHT/2);
 		this.center = new Point2D(GameModel.SCREEN_HEIGHT/2, GameModel.SCREEN_HEIGHT/2);
-		
 	}
 	
 	/*
