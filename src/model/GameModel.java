@@ -54,11 +54,11 @@ public class GameModel extends Observable{
 			asteroid.update(dt);
 		}
 		
+		this.player.update(dt, inputs);
 		/**
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
 		}
-		this.player.update(dt, moveForward, turnRight, turnLeft);
 		
 		if (shoot) {
 			double rotation = this.player.getRotation();
