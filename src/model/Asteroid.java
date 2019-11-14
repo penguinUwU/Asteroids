@@ -53,6 +53,7 @@ public class Asteroid extends GameObject{
 		this.velY = vel*Math.sin(angle);
 		
 		this.body.setStroke(Color.WHITE);
+		this.body.setFill(Color.TRANSPARENT);
 		
 		this.body.setTranslateX(0.0d);
 		this.body.setTranslateY(0.0d);

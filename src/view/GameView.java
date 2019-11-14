@@ -92,12 +92,12 @@ public class GameView implements Observer{
 		removedPolygon = ((GameModel)o).getRemovedPolygons();
 		//Iterating through addedPolygon and adding them to screen 
 		for (int counter = 0; counter < addedPolygon.size(); counter++) {
-			this.root.getChildren().add(addedPolygon.get(counter));
+			this.screen.getChildren().add(addedPolygon.get(counter));
 		}
 		
 		//Iterating through removedPolygon and removing them from screen
 		for (int counter = 0; counter < removedPolygon.size(); counter++) {
-			this.root.getChildren().remove(removedPolygon.get(counter));
+			this.screen.getChildren().remove(removedPolygon.get(counter));
 		}
 		
 		for(Node child : bar.getItems()) {
