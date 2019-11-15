@@ -17,6 +17,13 @@ public abstract class GameObject{
 	protected Polygon body;
 	protected Point2D center;
 
+	public GameObject() {
+		this.body = new Polygon();
+		this.body.setTranslateX(0.0d);
+		this.body.setTranslateY(0.0d);
+		this.center = new Point2D(0.0d, 0.0d);
+	}
+	
 	/*
 	 * This is the abstract class update. Implementation varies on game object.
 	 * 
@@ -29,7 +36,7 @@ public abstract class GameObject{
 		this.wrap();
 	}
 	
-	private void translate(double dx, double dy) {
+	protected void translate(double dx, double dy) {
 		this.center = this.center.add(dx, dy);
 		this.body.setTranslateX(this.body.getTranslateX()+dx);
 		this.body.setTranslateY(this.body.getTranslateY()+dy);

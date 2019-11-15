@@ -1,31 +1,38 @@
 package model;
 
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 
 public class Bullet extends GameObject {
 	
 	private static final int BULLET_VEL = 150;
-	private static final float BULLET_LIFETIME = 3.0f;
-	private float lifetime;
+	private static final double BULLET_LIFETIME = 3.0d;
+	private double lifetime;
 	
-	public Bullet() {
+	public Bullet(double posX, double posY, double rotation) {
 		super();
-		this.lifetime = BULLET_LIFETIME;
-		this.body.setStroke(Color.WHITE);
-	}
-	
-	public void update(float dt, double rotation, double positionX, double positionY) {
 		
 		this.velX = BULLET_VEL * java.lang.Math.cos(rotation);
 		this.velY = BULLET_VEL * java.lang.Math.sin(rotation);
+		this.lifetime = BULLET_LIFETIME;
 		
-		if (this.lifetime < dt) {
-			super.update(this.lifetime); // If the bullet exceeds its time limit
-			this.lifetime = 0;
-		} else {
-			super.update(dt);
-			this.lifetime -= dt;
-		}
+		this.body.getPoints().addAll(new Double[]{
+			    -2.0, -2.0,
+			    2.0, -2.0,
+			    2.0, 2.0,
+			    -2.0, 2.0});
+		this.body.setStroke(Color.WHITE);
 		
+		super.translate(posX, posY);
+	}
+	
+	public void update(float dt, double rotation, double positionX, double positionY) {
+		super.update(dt);
+		this.lifetime -= dt;
+	}
+	
+	public boolean lifetimeDepleted() {
+		return this.lifetime <= 0.0d;
 	}
 }

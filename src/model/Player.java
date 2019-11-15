@@ -21,9 +21,9 @@ public class Player extends GameObject {
 	private static final double PLAYER_TURN_SPEED = 220;
 
 	public Player() {
+		super();
 		this.velX = 0.0;
 		this.velY = 0.0;
-		this.body = new Polygon();
 		this.body.getPoints().addAll(new Double[] {
 				-10.0d, -10.0d,
 				 10.0d, 0.0d,
@@ -33,9 +33,7 @@ public class Player extends GameObject {
 		this.body.setStroke(Color.WHITE);
 		this.body.setFill(Color.TRANSPARENT);
 
-		this.body.setTranslateX(GameModel.SCREEN_WIDTH/2);
-		this.body.setTranslateY(GameModel.SCREEN_HEIGHT/2);
-		this.center = new Point2D(GameModel.SCREEN_HEIGHT/2, GameModel.SCREEN_HEIGHT/2);
+		super.translate(GameModel.SCREEN_WIDTH/2, GameModel.SCREEN_HEIGHT/2);
 	}
 	
 	/*

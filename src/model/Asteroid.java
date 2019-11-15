@@ -22,12 +22,13 @@ public class Asteroid extends GameObject{
 	private static final int S_ASTEROID_MIN_VEL = 40;
 	
 	public Asteroid(char size) {
+		super();
 		
 		Random rand = new Random();
 
 		double angle = rand.nextDouble()*2*Math.PI;
 		double vel = 0.0d;
-		this.body = new Polygon();
+		
 		this.body.getPoints().addAll(new Double[]{
 			    8.0, -16.0,
 			    16.0, -8.0,
@@ -54,9 +55,5 @@ public class Asteroid extends GameObject{
 		
 		this.body.setStroke(Color.WHITE);
 		this.body.setFill(Color.TRANSPARENT);
-		
-		this.body.setTranslateX(0.0d);
-		this.body.setTranslateY(0.0d);
-		this.center = new Point2D(0.0d, 0.0d);
 	}
 }
