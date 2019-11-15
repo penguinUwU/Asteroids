@@ -63,6 +63,7 @@ public class GameView implements Observer{
 		timeNum.setId("time");
 		
 		Button reset = new Button("reset");
+		reset.setDefaultButton(false );
 		ButtonPressEventHandler handle = new ButtonPressEventHandler(controller);
 		reset.setOnAction(handle);
 		
@@ -78,7 +79,6 @@ public class GameView implements Observer{
 		screen.minHeight(GameModel.SCREEN_HEIGHT);
 		screen.minWidth(GameModel.SCREEN_WIDTH);
 		screen.setBackground(new Background(back));
-		
 		
 		root.getChildren().addAll(screen, bar);
 		return root;

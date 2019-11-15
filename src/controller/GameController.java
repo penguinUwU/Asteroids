@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
@@ -38,7 +39,8 @@ public class GameController extends Application {
 		
 		// create the Label and Scene
 		stage.setTitle("Space Rocks");
-		scene = new Scene(gameView.getRoot(this), GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
+		Parent root = gameView.getRoot(this);
+		scene = new Scene(root, GameModel.SCREEN_HEIGHT, GameModel.SCREEN_WIDTH);
 		scene.setFill(Color.BLACK);
 		stage.setScene(scene);
 		stage.setResizable(false);
@@ -47,6 +49,7 @@ public class GameController extends Application {
 		stage.setMaxWidth(GameModel.SCREEN_WIDTH);
 		stage.setMinWidth(GameModel.SCREEN_WIDTH);
 		stage.show();
+		root.requestFocus();
 		
 		// bind keys to actions
 		controls = new HashMap<>();
@@ -65,17 +68,8 @@ public class GameController extends Application {
 		// reset time variables
 		pollTime = 0;
 		previousTime = 0;
-	}
-	
-	/**
-	 * starts the game
-	 */
-	@Override
-	public void start(Stage stage) {
-		// reset all values
-		this.stage = stage;
-		resetGame();
-
+		
+		
 		// set action of key presses
 		scene.setOnKeyPressed(e -> {
 			KeyCode key = e.getCode();
@@ -93,8 +87,17 @@ public class GameController extends Application {
 				inputs.put(controls.get(key), false);
 			}
 		});
-		
-		
+	}
+	
+	/**
+	 * starts the game
+	 */
+	@Override
+	public void start(Stage stage) {
+		// reset all values
+		this.stage = stage;
+		resetGame();
+
 		// create game loop, defaults to 60 fps
 		AnimationTimer gameLoop = new AnimationTimer() {
 			@Override
