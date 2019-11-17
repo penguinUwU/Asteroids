@@ -45,12 +45,15 @@ public class Asteroid extends GameObject{
 			vel = L_ASTEROID_MIN_VEL + rand.nextDouble()*(L_ASTEROID_MAX_VEL-L_ASTEROID_MIN_VEL);
 			this.body.setScaleX(1.5);
 			this.body.setScaleY(1.5);
+			this.body.setStrokeWidth(1.0d);
 		} else if (size == 1) {
 			vel = M_ASTEROID_MIN_VEL + rand.nextDouble()*(M_ASTEROID_MAX_VEL-M_ASTEROID_MIN_VEL);
+			this.body.setStrokeWidth(1.5d);
 		} else if (size == 0) {
 			vel = S_ASTEROID_MIN_VEL + rand.nextDouble()*(S_ASTEROID_MAX_VEL-S_ASTEROID_MIN_VEL);
 			this.body.setScaleX(0.5);
 			this.body.setScaleY(0.5);
+			this.body.setStrokeWidth(3.0d);
 		}
 		
 		this.velX = vel*Math.cos(angle);

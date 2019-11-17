@@ -23,6 +23,7 @@ public class Bullet extends GameObject {
 			    2.0, 2.0,
 			    -2.0, 2.0});
 		this.body.setStroke(Color.WHITE);
+		this.body.setFill(Color.WHITE);
 		
 		super.translate(posX, posY);
 	}
