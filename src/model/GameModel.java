@@ -12,19 +12,24 @@ public class GameModel extends Observable{
 	
 	private static final int NUM_ASTEROIDS = 10;
 	
+	private static final double TOTAL_SHOOT_COOLDOWN = 0.5;
+	
 	//private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
+	private ArrayList<Bullet> bullets;
 	private Player player;
 	
 	private ArrayList<Polygon> addedPolygons;
 	private ArrayList<Polygon> removedPolygons;
 	
-	private int score = 0;
-	private int lives = 3;
-	private boolean gameOver = false;
+	private int score;
+	private int lives;
+	private double shootCooldown;
+	private boolean gameOver;
 	
 	public GameModel() {
 		this.asteroids = new ArrayList<Asteroid>(); 
+		this.bullets = new ArrayList<Bullet>();
 		this.addedPolygons = new ArrayList<Polygon>(); 
 		this.removedPolygons = new ArrayList<Polygon>(); 
 		
@@ -36,6 +41,11 @@ public class GameModel extends Observable{
 		
 		this.player = new Player();
 		this.addedPolygons.add(this.player.getBody());
+		
+		this.score = 0;
+		this.lives = 3;
+		this.shootCooldown = 0.0d;
+		this.gameOver = false;
 	}
 	
 	/**
@@ -54,19 +64,35 @@ public class GameModel extends Observable{
 			asteroid.update(dt);
 		}
 		
-		this.player.update(dt, inputs);
-		/**
+		ArrayList<Bullet> bulletsToRemove = new ArrayList<Bullet>();
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
+			if (bullet.lifetimeDepleted()) {
+				this.removedPolygons.add(bullet.getBody());
+				bulletsToRemove.add(bullet);
+			}
+		}
+		for (Bullet bullet: bulletsToRemove) {
+			this.bullets.remove(bullet);
 		}
 		
-		if (shoot) {
-			double rotation = this.player.getRotation();
-			Bullet bullet = new Bullet(rotation);
+		
+		this.player.update(dt, inputs);
+		
+		if (this.shootCooldown > 0.0d) {
+			this.shootCooldown -= dt;
+		}
+		
+		if (inputs.get("shoot") && this.shootCooldown <= 0.0d) {
+			double rotation = this.player.getRotationRadians();
+			double posX = this.player.body.getTranslateX();
+			double posY = this.player.body.getTranslateY();
+			Bullet bullet = new Bullet(posX, posY, rotation);
 			this.bullets.add(bullet);
 			this.addedPolygons.add(bullet.getBody());
+			this.shootCooldown = GameModel.TOTAL_SHOOT_COOLDOWN;
 		}
-		*/
+		
 		
 		this.bulletVSAsteroid();
 		this.playerVSAsteroid();
@@ -81,7 +107,7 @@ public class GameModel extends Observable{
 	private void playerVSAsteroid(){
 		//NOT IMPLEMENTED
 	}
-	
+
 	/**
 	 * 
 	 * @return lives

@@ -27,7 +27,8 @@ public class Bullet extends GameObject {
 		super.translate(posX, posY);
 	}
 	
-	public void update(float dt, double rotation, double positionX, double positionY) {
+	@Override
+	public void update(double dt) {
 		super.update(dt);
 		this.lifetime -= dt;
 	}

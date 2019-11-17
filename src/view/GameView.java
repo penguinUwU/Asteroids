@@ -36,9 +36,9 @@ import model.GameModel;
  */
 
 public class GameView implements Observer{
-	public Group root = new Group();
-	public Pane screen = new Pane();
-	ToolBar bar = new ToolBar();
+	private Group root = new Group();
+	private Pane screen = new Pane();
+	private ToolBar bar = new ToolBar();
 
 	public Parent getRoot(GameController controller) {
 		//add background color
