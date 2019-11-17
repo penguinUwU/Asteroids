@@ -61,5 +61,9 @@ public abstract class GameObject{
 	public Polygon getBody() {
 		return this.body;
 	}
+	
+	public Point2D getCenter() {
+		return this.center;
+	}
 }
 

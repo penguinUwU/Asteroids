@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Observable;
 
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Shape;
 
 public class GameModel extends Observable{
 	public static final int SCREEN_HEIGHT = 500;
@@ -19,6 +20,11 @@ public class GameModel extends Observable{
 	private ArrayList<Bullet> bullets;
 	private Player player;
 	
+	private ArrayList<Asteroid> asteroidsToAdd;
+	private ArrayList<Bullet> bulletsToAdd;
+	private ArrayList<Asteroid> asteroidsToRemove;
+	private ArrayList<Bullet> bulletsToRemove;
+	
 	private ArrayList<Polygon> addedPolygons;
 	private ArrayList<Polygon> removedPolygons;
 	
@@ -31,12 +37,14 @@ public class GameModel extends Observable{
 		this.asteroids = new ArrayList<Asteroid>(); 
 		this.bullets = new ArrayList<Bullet>();
 		this.addedPolygons = new ArrayList<Polygon>(); 
-		this.removedPolygons = new ArrayList<Polygon>(); 
+		this.removedPolygons = new ArrayList<Polygon>();
+		this.asteroidsToAdd = new ArrayList<Asteroid>();
+		this.bulletsToAdd = new ArrayList<Bullet>();
+		this.asteroidsToRemove = new ArrayList<Asteroid>();
+		this.bulletsToRemove = new ArrayList<Bullet>();
 		
 		for (int i=0; i<NUM_ASTEROIDS; i++) {
-			Asteroid asteroid = new Asteroid('L');
-			this.asteroids.add(asteroid);
-			this.addedPolygons.add(asteroid.getBody());
+			this.asteroidsToAdd.add(new Asteroid(2, 0.0d, 0.0d));
 		}
 		
 		this.player = new Player();
@@ -46,6 +54,9 @@ public class GameModel extends Observable{
 		this.lives = 3;
 		this.shootCooldown = 0.0d;
 		this.gameOver = false;
+		
+		this.removeDestroyedGameObjects();
+		this.addNewGameObjects();
 	}
 	
 	/**
@@ -64,18 +75,12 @@ public class GameModel extends Observable{
 			asteroid.update(dt);
 		}
 		
-		ArrayList<Bullet> bulletsToRemove = new ArrayList<Bullet>();
 		for (Bullet bullet: this.bullets) {
 			bullet.update(dt);
 			if (bullet.lifetimeDepleted()) {
-				this.removedPolygons.add(bullet.getBody());
-				bulletsToRemove.add(bullet);
+				this.bulletsToRemove.add(bullet);
 			}
 		}
-		for (Bullet bullet: bulletsToRemove) {
-			this.bullets.remove(bullet);
-		}
-		
 		
 		this.player.update(dt, inputs);
 		
@@ -87,27 +92,67 @@ public class GameModel extends Observable{
 			double rotation = this.player.getRotationRadians();
 			double posX = this.player.body.getTranslateX();
 			double posY = this.player.body.getTranslateY();
-			Bullet bullet = new Bullet(posX, posY, rotation);
-			this.bullets.add(bullet);
-			this.addedPolygons.add(bullet.getBody());
+			this.bulletsToAdd.add(new Bullet(posX, posY, rotation));
 			this.shootCooldown = GameModel.TOTAL_SHOOT_COOLDOWN;
 		}
 		
 		
 		this.bulletVSAsteroid();
 		this.playerVSAsteroid();
+		this.removeDestroyedGameObjects();
+		this.addNewGameObjects();
 		this.setChanged();
 		this.notifyObservers();
 	}
 	
 	private void bulletVSAsteroid(){
-		//NOT IMPLEMENTED
+		for (Asteroid asteroid: this.asteroids) {
+			for (Bullet bullet: this.bullets) {
+				if (asteroid.getBody().getBoundsInParent().intersects(bullet.getBody().getBoundsInParent())) {
+					if (asteroid.getSize() > 0) {
+						this.asteroidsToAdd.add(new Asteroid(asteroid.getSize() - 1, 
+								asteroid.getBody().getTranslateX(), asteroid.getBody().getTranslateY()));
+						this.asteroidsToAdd.add(new Asteroid(asteroid.getSize() - 1, 
+								asteroid.getBody().getTranslateX(), asteroid.getBody().getTranslateY()));
+					}
+					this.score += 10;
+					this.asteroidsToRemove.add(asteroid);
+					this.bulletsToRemove.add(bullet);
+				}
+			}
+		}
 	}
 	
 	private void playerVSAsteroid(){
 		//NOT IMPLEMENTED
 	}
 
+	private void addNewGameObjects() {
+		for (Asteroid asteroid: this.asteroidsToAdd) {
+			this.addedPolygons.add(asteroid.getBody());
+			this.asteroids.add(asteroid);
+		}
+		for (Bullet bullet: this.bulletsToAdd) {
+			this.addedPolygons.add(bullet.getBody());
+			this.bullets.add(bullet);
+		}
+		this.asteroidsToAdd.clear();
+		this.bulletsToAdd.clear();
+	}
+	
+	private void removeDestroyedGameObjects() {
+		for (Asteroid asteroid: this.asteroidsToRemove) {
+			this.removedPolygons.add(asteroid.getBody());
+			this.asteroids.remove(asteroid);
+		}
+		for (Bullet bullet: this.bulletsToRemove) {
+			this.removedPolygons.add(bullet.getBody());
+			this.bullets.remove(bullet);
+		}
+		this.asteroidsToRemove.clear();
+		this.bulletsToRemove.clear();
+	}
+	
 	/**
 	 * 
 	 * @return lives

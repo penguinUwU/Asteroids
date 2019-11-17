@@ -21,8 +21,11 @@ public class Asteroid extends GameObject{
 	private static final int S_ASTEROID_MAX_VEL = 50;
 	private static final int S_ASTEROID_MIN_VEL = 40;
 	
-	public Asteroid(char size) {
+	private int size;
+	
+	public Asteroid(int size, double posX, double posY) {
 		super();
+		this.size = size;
 		
 		Random rand = new Random();
 
@@ -38,13 +41,13 @@ public class Asteroid extends GameObject{
 			    -16.0, 8.0,
 			    -12.0, 2.0,
 			    -16.0, -10.0});
-		if (size == 'L') {
+		if (size == 2) {
 			vel = L_ASTEROID_MIN_VEL + rand.nextDouble()*(L_ASTEROID_MAX_VEL-L_ASTEROID_MIN_VEL);
 			this.body.setScaleX(1.5);
 			this.body.setScaleY(1.5);
-		} else if (size == 'M') {
+		} else if (size == 1) {
 			vel = M_ASTEROID_MIN_VEL + rand.nextDouble()*(M_ASTEROID_MAX_VEL-M_ASTEROID_MIN_VEL);
-		} else if (size == 'S') {
+		} else if (size == 0) {
 			vel = S_ASTEROID_MIN_VEL + rand.nextDouble()*(S_ASTEROID_MAX_VEL-S_ASTEROID_MIN_VEL);
 			this.body.setScaleX(0.5);
 			this.body.setScaleY(0.5);
@@ -55,5 +58,11 @@ public class Asteroid extends GameObject{
 		
 		this.body.setStroke(Color.WHITE);
 		this.body.setFill(Color.TRANSPARENT);
+		
+		super.translate(posX, posY);
+	}
+	
+	public int getSize() {
+		return this.size;
 	}
 }
