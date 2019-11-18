@@ -1,8 +1,7 @@
 package model;
+
 import java.util.HashMap;
 
-import javafx.geometry.Point2D;
-import javafx.scene.shape.Polygon;
 import javafx.scene.paint.Color;
 
 /*

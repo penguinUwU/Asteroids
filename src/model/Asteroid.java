@@ -1,10 +1,9 @@
 package model;
-import java.util.ArrayList;
-import javafx.geometry.Point2D;
+
 import java.util.Random;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
+
 /*
  * This is class for the Asteroids (i.e. all sizes for now)
  * 

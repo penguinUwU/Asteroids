@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Observable;
 
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Shape;
 
 public class GameModel extends Observable{
 	public static final int SCREEN_HEIGHT = 500;
@@ -190,8 +189,13 @@ public class GameModel extends Observable{
 	 * @return ArrayList of added polygons
 	 */
 	public ArrayList<Polygon> getAddedPolygons() {
+		ArrayList<Polygon> added = new ArrayList<>();
+		
 		//create shallow copy (object references copied) of addedPolygons
-		ArrayList<Polygon> added = (ArrayList<Polygon>)this.addedPolygons.clone();
+		for (Polygon p : this.addedPolygons)
+			added.add(p);
+		
+		//empty the copied ArrayList
 		this.addedPolygons.clear();
 		return added;
 	}
@@ -203,8 +207,13 @@ public class GameModel extends Observable{
 	 * @return ArrayList of removed polygons
 	 */
 	public ArrayList<Polygon> getRemovedPolygons(){
+		ArrayList<Polygon> removed = new ArrayList<>();
+		
 		//create shallow copy (object references copied) of removedPolygons
-		ArrayList<Polygon> removed = (ArrayList<Polygon>)this.removedPolygons.clone();
+		for (Polygon p : this.removedPolygons)
+			removed.add(p);
+		
+		//empty the copied ArrayList
 		this.removedPolygons.clear();
 		return removed;
 	}
