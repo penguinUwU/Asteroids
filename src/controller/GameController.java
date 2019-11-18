@@ -110,6 +110,9 @@ public class GameController extends Application {
 		        previousTime = ((double)currentTime) / 1000000000;
 		        
 		        gameModel.update(pollTime, inputs);
+		        if (gameModel.isGameOver()) {
+		        	resetGame();
+		        }
 			}
 		};
 		

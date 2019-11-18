@@ -124,7 +124,17 @@ public class GameModel extends Observable{
 	}
 	
 	private void playerVSAsteroid(){
-		//NOT IMPLEMENTED
+		for (Asteroid asteroid: this.asteroids) {
+			if (asteroid.getBody().getBoundsInParent().intersects(this.player.getBody().getBoundsInParent())) {
+				this.lives -= 1;
+				this.removedPolygons.add(this.player.body);
+				this.player = new Player();
+				this.addedPolygons.add(this.player.body);
+				if (this.lives <= 0) {
+					this.gameOver = true;
+				}
+			}
+		}
 	}
 
 	private void addNewGameObjects() {
@@ -169,6 +179,10 @@ public class GameModel extends Observable{
 		return this.score;
 	}
 	
+	public boolean isGameOver() {
+		return this.gameOver;
+	}
+	
 	/**
 	 * Returns a shallow copy of the ArrayList of polygons that have been added to the game. A side effect of this
 	 * method is that this.addedPolygons is emptied. 
@@ -178,7 +192,7 @@ public class GameModel extends Observable{
 	public ArrayList<Polygon> getAddedPolygons() {
 		//create shallow copy (object references copied) of addedPolygons
 		ArrayList<Polygon> added = (ArrayList<Polygon>)this.addedPolygons.clone();
-		this.addedPolygons.clear(); //empty addedPolygons
+		this.addedPolygons.clear();
 		return added;
 	}
 	
@@ -191,7 +205,7 @@ public class GameModel extends Observable{
 	public ArrayList<Polygon> getRemovedPolygons(){
 		//create shallow copy (object references copied) of removedPolygons
 		ArrayList<Polygon> removed = (ArrayList<Polygon>)this.removedPolygons.clone();
-		this.removedPolygons.clear(); //empty removedPolygons
+		this.removedPolygons.clear();
 		return removed;
 	}
 
