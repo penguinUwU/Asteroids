@@ -40,7 +40,7 @@ public class GameView implements Observer{
 		Label lives = new Label("Lives:");
 		lives.setTextFill(Color.WHITE);
 		Label lifeImage = new Label();
-		Image life = new Image(getClass().getResourceAsStream("onelife.png"));
+		Image life = new Image(getClass().getResourceAsStream("/view/oneLife.png"));
 		lifeImage.setGraphic(new ImageView(life));
 		lifeImage.setId("lives");
 		
@@ -101,15 +101,15 @@ public class GameView implements Observer{
 			else if(child.getId() == "lives") {
 				int lives = ((GameModel)o).getLives();
 				if(lives == 3) {
-					Image life = new Image(getClass().getResourceAsStream("threelife.png"));
+					Image life = new Image(getClass().getResourceAsStream("/view/threeLife.png"));
 					((Label)child).setGraphic(new ImageView(life));
 				}
 				else if(lives == 2) {
-					Image life = new Image(getClass().getResourceAsStream("twolife.png"));
+					Image life = new Image(getClass().getResourceAsStream("/view/twoLife.png"));
 					((Label)child).setGraphic(new ImageView(life));
 				}
 				else {
-					Image life = new Image(getClass().getResourceAsStream("onelife.png"));
+					Image life = new Image(getClass().getResourceAsStream("/view/oneLife.png"));
 					((Label)child).setGraphic(new ImageView(life));
 				}
 			}
