@@ -42,9 +42,9 @@ public class GameModel extends Observable{
 		this.asteroidsToRemove = new ArrayList<Asteroid>();
 		this.bulletsToRemove = new ArrayList<Bullet>();
 		
-		for (int i=0; i<NUM_ASTEROIDS; i++) {
-			this.asteroidsToAdd.add(new Asteroid(2, 0.0d, 0.0d));
-		}
+//		for (int i=0; i<NUM_ASTEROIDS; i++) {
+//			this.asteroidsToAdd.add(new Asteroid(2, 0.0d, 0.0d));
+//		}
 		
 		this.player = new Player();
 		this.addedPolygons.add(this.player.getBody());
@@ -189,13 +189,9 @@ public class GameModel extends Observable{
 	 * @return ArrayList of added polygons
 	 */
 	public ArrayList<Polygon> getAddedPolygons() {
-		ArrayList<Polygon> added = new ArrayList<>();
-		
-		//create shallow copy (object references copied) of addedPolygons
+		ArrayList<Polygon> added = new ArrayList<>();		
 		for (Polygon p : this.addedPolygons)
 			added.add(p);
-		
-		//empty the copied ArrayList
 		this.addedPolygons.clear();
 		return added;
 	}
@@ -208,12 +204,8 @@ public class GameModel extends Observable{
 	 */
 	public ArrayList<Polygon> getRemovedPolygons(){
 		ArrayList<Polygon> removed = new ArrayList<>();
-		
-		//create shallow copy (object references copied) of removedPolygons
 		for (Polygon p : this.removedPolygons)
 			removed.add(p);
-		
-		//empty the copied ArrayList
 		this.removedPolygons.clear();
 		return removed;
 	}
