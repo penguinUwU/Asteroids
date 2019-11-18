@@ -42,9 +42,9 @@ public class GameModel extends Observable{
 		this.asteroidsToRemove = new ArrayList<Asteroid>();
 		this.bulletsToRemove = new ArrayList<Bullet>();
 		
-//		for (int i=0; i<NUM_ASTEROIDS; i++) {
-//			this.asteroidsToAdd.add(new Asteroid(2, 0.0d, 0.0d));
-//		}
+		for (int i=0; i<NUM_ASTEROIDS; i++) {
+			this.asteroidsToAdd.add(new Asteroid(2, 0.0d, 0.0d));
+		}
 		
 		this.player = new Player();
 		this.addedPolygons.add(this.player.getBody());
