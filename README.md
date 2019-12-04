@@ -1,102 +1,102 @@
 # Space Rocks
-A recreation of the 1979 game Asteroids in Java for the CSC290 class.
+A recreation of the 1979 game Asteroids created using `Java` and `Javafx` for the CSC290 class.
 
-//Installation
 
- //Game Play
+## Navigation
+<a name="top"></a>
+1. [Game Description](#intro)
+    - [Screenshots](#screen)
+2. [Game Controls and Features](#feature)
+3. [How to Install Flipsies](#install)
+4. [Documentation](#documen)
+5. [Authors](#Authors)
+6. [License Information](#license)
 
-//License
+## <a name="intro"></a>Game Description
 
-//Project Directory Structure
+Do you find checkers boring? Do you find chess time-consuming? Then Flipsies is the perfect game for you!
 
-//Game Extension
+Flipsies is a Python implementation of the famous strategy board game "Othello". With a minimalistic blue-and-black theme, an intuitive interface, and easy installation, Flipsies can be enjoyed by all ages.
 
-//Contribution
+Flipsies uses an 8-by-8 board and requires 2 players. Player 1 can only place white stones, and Player 2 can only place black
+stones. Initially, the board has two black stones and two white stones arranged in the centre of the board, and gameplay
+branches out from the centre. The objective is to have all the stones on the board displaying  your colour by the end of the
+game.
 
-//Code Contribution
+The rules of Flipsies are very straightforward. During their turn, each player can place a stone in the same diagonal, column,
+or row of another stone of their colour. If any opponent's pieces lie in the middle, they are "flipped": white pieces
+become black and black pieces become white. Gameplay ends either when there are no remaining spots on the board to place
+stones, or when all the stones on the board display the same colour.
 
-// README Contribution
+[Back to top](#top)
 
-## Getting Started
+## <a name="screen"></a>Screenshots
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+![Imgur](https://i.imgur.com/hTIDj54.png)
+![Imgur](https://i.imgur.com/3TKCKOu.png)
+![Imgur](https://i.imgur.com/raEKjA5.png)
 
-### Prerequisites
 
-What things you need to install the software and how to install them
+[Back to top](#top)
 
-```
-Give examples
-```
+## <a name="feature"></a>Game Controls and Features
 
-### Installing
+All gameplay is controlled by mouse input, and there are no keyboard commands.
 
-A step by step series of examples that tell you how to get a development env running
+The title screen contains a "Play" button and an "Instructions" button.
+- Click on the "Play" button to advance to the game screen.
+- Click on the "Instructions" button to read the game rules. Click on the "Back" button to return to the title screen.
 
-Say what the step will be
+The game screen contains an 8 by 8 board.
+- Click on the squares on the board to places stones.
+- **Important**: A stone will only be placed on the board if the move is valid according to the rules of Flipsies.
 
-```
-Give the example
-```
+The game will automatically proceed to the winning screen once the game detects that a player has won.
 
-And repeat
+[Back to top](#top)
 
-```
-until finished
-```
+## <a name="install"></a>How to Install Flipsies
 
-End with an example of getting some data out of the system or using it for a little demo
+### For `Windows`
 
-## Running the tests
+ First, download `Pygame` [here.](https://www.pygame.org/download.shtml)
 
-Explain how to run the automated tests for this system
+- :arrow_down: [Download Flipsies' zip file here.](https://github.com/kwpark23/Zeros_Matter/zipball/master)
+- Unzip and run the executable named `main` inside the extracted file with IDE of your choice.
 
-### Break down into end to end tests
 
-Explain what these tests test and why
+[Back to top](#top)
 
-```
-Give an example
-```
+## <a name="documen"></a>Documentation and Directory Structure
 
-### And coding style tests
+The documentation and directory structure of our project is located in the Wiki page of our repository.
+Check it out by clicking [here](https://github.com/kwpark23/Zeros_Matter/wiki)
 
-Explain what these tests test and why
+[Back to top](#top)
 
-```
-Give an example
-```
+## <a name="Authors"></a>Authors
 
-## Deployment
+Zeros_Matter is a group of 1st and 2nd year computer science students at the University of Toronto Mississauga.
+This project was done for credit in the course CSC290: Communication Skills for Computer Scientists. Group members
+are listed below:
 
-Add additional notes about how to deploy this on a live system
+-	Maha Kesibi
+-	Adiba Ahmed
+-	Damian Koscielniak
+-	Jin  Park
+-	Nivy Kani
 
-## Built With
+[Back to top](#top)
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## <a name="license"></a>License Information
 
-## Contributing
+The MIT License (MIT)
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Copyright © 2019 Zeros_Matter
 
-## Versioning
+You can find a copy of the License at https://mit-license.org/
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+License for them is in `Public Domain`
 
-## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+[Back to top](#top)
