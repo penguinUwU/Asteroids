@@ -57,6 +57,11 @@ public class Player extends GameObject {
 		super.update(dt);
 	}
 	
+	/**
+	 * Rotates the player by angle radians
+	 * 
+	 * @param angle the player wants to rotate by
+	 * */
 	private void rotate(double angle) {
 		this.body.setRotate(this.body.getRotate() + angle);
 	}
@@ -67,6 +72,10 @@ public class Player extends GameObject {
 	public double getRotationDegrees() {
 		return this.body.getRotate();
 	}
+	
+	/**
+	 * @return the rotational angle in radians
+	 * */
 	
 	public double getRotationRadians() {
 		return this.body.getRotate() / 180 * Math.PI;
