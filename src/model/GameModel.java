@@ -6,7 +6,14 @@ import java.util.Observable;
 
 import javafx.scene.shape.Polygon;
 
+/**
+ * This is the main game model class. This class defines the interactions between the
+ * game objects.
+ * 
+ * */
+
 public class GameModel extends Observable{
+	
 	public static final int SCREEN_HEIGHT = 500;
 	public static final int SCREEN_WIDTH = 500;
 	
@@ -31,6 +38,11 @@ public class GameModel extends Observable{
 	private int lives;
 	private double shootCooldown;
 	private boolean gameOver;
+	
+	/**
+	 * Creates the lists which will hold all the objects.
+	 * 
+	 * */
 	
 	public GameModel() {
 		this.asteroids = new ArrayList<Asteroid>(); 
@@ -104,6 +116,13 @@ public class GameModel extends Observable{
 		this.notifyObservers();
 	}
 	
+	/**
+	 * This method describes the interaction between a bullet and asteroid. If the bullet and asteroid
+	 * collide, then its interaction is based from the size of the asteroid. If the asteroid is small enough,
+	 * it will be destroyed. Else, the asteroid will be split into two smaller asteroids.
+	 * 
+	 * */
+	
 	private void bulletVSAsteroid(){
 		for (Asteroid asteroid: this.asteroids) {
 			for (Bullet bullet: this.bullets) {
@@ -122,6 +141,11 @@ public class GameModel extends Observable{
 		}
 	}
 	
+	/**
+	 * This method describes the interaction between a player and asteroid. If the player and asteroid meet, then 
+	 * player looses a life. If the player has no more lives, the game is over.
+	 * 
+	 * */
 	private void playerVSAsteroid(){
 		for (Asteroid asteroid: this.asteroids) {
 			if (asteroid.getBody().getBoundsInParent().intersects(this.player.getBody().getBoundsInParent())) {
@@ -136,6 +160,10 @@ public class GameModel extends Observable{
 		}
 	}
 
+	/**
+	 * This adds all the newly created asteroids and bullets in their appropriate attributes.
+	 * 
+	 * */
 	private void addNewGameObjects() {
 		for (Asteroid asteroid: this.asteroidsToAdd) {
 			this.addedPolygons.add(asteroid.getBody());
@@ -149,6 +177,10 @@ public class GameModel extends Observable{
 		this.bulletsToAdd.clear();
 	}
 	
+	/**
+	 * This removes all the objects that have been destroyed in game.
+	 * 
+	 * */
 	private void removeDestroyedGameObjects() {
 		for (Asteroid asteroid: this.asteroidsToRemove) {
 			this.removedPolygons.add(asteroid.getBody());
@@ -178,6 +210,9 @@ public class GameModel extends Observable{
 		return this.score;
 	}
 	
+	/**
+	 * @return if game is over
+	 * */
 	public boolean isGameOver() {
 		return this.gameOver;
 	}

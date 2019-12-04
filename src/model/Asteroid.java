@@ -4,11 +4,10 @@ import java.util.Random;
 
 import javafx.scene.paint.Color;
 
-/*
- * This is class for the Asteroids (i.e. all sizes for now)
+/**
+ * This is class for the Asteroids.
  * 
  * @author Abhay and Mathieu.
- * 
  * */
 
 public class Asteroid extends GameObject{
@@ -22,8 +21,16 @@ public class Asteroid extends GameObject{
 	
 	private int size;
 	
+	/**
+	 * Creates an Asteroid object with size represented as a positive integer. The constructor takes in a
+	 * starting (x, y) position on the board. It's initial velocity is 0.
+	 * 
+	 * @param size
+	 * @param posX represents the abscissa of the initial position of the asteroid
+	 * @param posY represents the ordinate of the initial position of the asteroid
+	 * */
+	
 	public Asteroid(int size, double posX, double posY) {
-		super();
 		this.size = size;
 		
 		Random rand = new Random();
@@ -63,6 +70,12 @@ public class Asteroid extends GameObject{
 		
 		super.translate(posX, posY);
 	}
+	
+	/**
+	 * Returns the size of the asteroid
+	 * 
+	 * @return this.size
+	 * */
 	
 	public int getSize() {
 		return this.size;
