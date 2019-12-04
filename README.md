@@ -46,6 +46,11 @@ If the player’s spaceship collides with an asteroid, the player will lose a li
 [Back to top](#top)
 
 ## <a name="install"></a>How to Install Space Rocks
+### For Windows
+- Download Space-Rocks-1.0-Installer.exe which can be found [here.](https://github.com/penguinUwU/Space-Rocks/releases)
+- Run the executable.
+- A prompt will appear to select the destination location. Select a folder and then click “Next >”.
+- A folder named “Space-Rocks” will be created inside of the folder selected in the previous step. Inside of the "Space-Rocks" folder, run the application named “Space-Rocks” to play the game. 
 
 
 [Back to top](#top)
@@ -82,7 +87,7 @@ The update method is meant to be run while the game is in progress, and it updat
 
 The MIT License (MIT)
 
-Copyright © 2019 Zeros_Matter
+Copyright © 2019 Space-Rocks
 
 You can find a copy of the License at https://mit-license.org/
 
