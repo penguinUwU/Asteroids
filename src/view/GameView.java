@@ -34,9 +34,17 @@ public class GameView implements Observer{
 	private Pane screen = new Pane();
 	private ToolBar bar = new ToolBar();
 
+	/**
+	 * Designs the screen and gamebar elements
+	 * @param controller, the instance of the controller to set up the button
+	 * @return Parent, used to initialize the window by the game controller
+	 */
 	public Parent getRoot(GameController controller) {
-		//add background color
+		
+		//create background color
 		BackgroundFill back = new BackgroundFill(Color.BLACK, new CornerRadii(1), new Insets(0.0,0.0,0.0,0.0));
+		
+		//create lives label
 		Label lives = new Label("Lives:");
 		lives.setTextFill(Color.WHITE);
 		Label lifeImage = new Label();
@@ -44,40 +52,52 @@ public class GameView implements Observer{
 		lifeImage.setGraphic(new ImageView(life));
 		lifeImage.setId("lives");
 		
+		//create score label
 		Label score = new Label("Score: ");
 		score.setTextFill(Color.WHITE);
 		Label scoreNum = new Label("0");
 		scoreNum.setTextFill(Color.WHITE);
 		scoreNum.setId("score");
 		
+		//create time label
 		Label time = new Label("Time: ");
 		time.setTextFill(Color.WHITE);		
 		Label timeNum = new Label("0");
 		timeNum.setTextFill(Color.WHITE);	
 		timeNum.setId("time");
 		
+		//create reset button, bind it to event handler in controller package
 		Button reset = new Button("reset");
 		reset.setDefaultButton(false );
 		ButtonPressEventHandler handle = new ButtonPressEventHandler(controller);
 		reset.setOnAction(handle);
 		
+		//create separators between each label
 		Label separator1 = new Label("            ");
 		Label separator2 = new Label("            ");
 		Label separator3 = new Label("            ");
 		
+		//put all labels and buttons onto the gamebar
 		bar.setBackground(new Background(back));
 		bar.getItems().addAll(lives, lifeImage, separator1, score, scoreNum, separator2, time, timeNum, separator3, reset);
-				
+		
+		//define screen parameters and set background
 		screen.maxHeight(GameModel.SCREEN_HEIGHT);
 		screen.maxWidth(GameModel.SCREEN_WIDTH);
 		screen.minHeight(GameModel.SCREEN_HEIGHT);
 		screen.minWidth(GameModel.SCREEN_WIDTH);
 		screen.setBackground(new Background(back));
 		
+		//add both the screen and the game bar to the display window
 		root.getChildren().addAll(screen, bar);
 		return root;
 	}
 
+	/**
+	 * Updates what the screen is showing, adding/removing polygons and updating gamebar
+	 * Called by the controller in the main game loop
+	 * @param Observable o, the game instance
+	 */
 	public void update(Observable o, Object args) {
 		ArrayList<Polygon> addedPolygon = new ArrayList<Polygon>();
 		ArrayList<Polygon> removedPolygon = new ArrayList<Polygon>();
@@ -94,6 +114,7 @@ public class GameView implements Observer{
 			this.screen.getChildren().remove(removedPolygon.get(counter));
 		}
 		
+		//Updating items on the game bar, such as score, lives, and time
 		for(Node child : bar.getItems()) {
 			if(child.getId() == "score") {
 				((Label)child).setText(String.valueOf(((GameModel)o).getScore()));
