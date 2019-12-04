@@ -28,6 +28,19 @@ A recreation of the 1979 game Asteroids created using `Java` and `Javafx` for th
 [Back to top](#top)
 
 ## <a name="feature"></a>Game Controls and Features
+The player's spaceship is controlled with the keyboard. The mouse is only used to click the "restart" button in the top left.
+
+The game begins immediately after launching the application. The player’s spaceship starts at the center of the screen. The asteroids start along the edges of the screen. Each asteroid moves in a random direction. 
+
+The player’s spaceship is controlled using the following keyboard keys: 
+- Press and hold the “W” key to accelerate in the direction the spaceship is facing
+- Press and hold the “A” key to rotate the spaceship counter clockwise
+- Press and hold the “D” key to rotate the spaceship clockwise
+- Press the “Space” key to shoot a bullet in the direction the spaceship is facing 
+
+The player’s spaceship maintains its velocity while the “W” key is not held down. If the player’s spaceship, an asteroid, or a bullet leaves one side of the screen, it will reappear on the opposite side.
+
+If the player’s spaceship collides with an asteroid, the player will lose a life and their spaceship will respawn at the center of the screen. Losing all three lives causes the game to reset. If a bullet collides with a medium or large asteroid, then the asteroid will split into two smaller asteroids. If a bullet collides with a small asteroid, then the asteroid will be destroyed. The player wins once all the asteroids have been destroyed. 
 
 
 [Back to top](#top)
