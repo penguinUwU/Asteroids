@@ -72,7 +72,14 @@ If the player’s spaceship collides with an asteroid, the player will lose a li
     * threeLife.png
     * twoLife.png
 
+### Major Classes and Methods
 **Model:**
+- The class GameModel contains the instances of the Player, Asteroids, and Bullets as well as collision detection logic.
+	* update: calls the function update in the Player, Asteroids, and Bullets and checks for collisions.
+	* getAddedPolygons: returns the polygons that need to be rendered to the screen
+	* getRemovedPolygons: returns the polygons that need to stop being rendered to the screen
+- The classes Player, Asteroid, and Bullet contain logic that dictates their respective behavior.
+	* update: updates the respective game object’s attributes such as position according to their logic
 
 **View:**
 
