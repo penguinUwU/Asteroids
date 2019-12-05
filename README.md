@@ -157,7 +157,7 @@ In this project, I worked on the model of this game. I specifically worked on th
 **Michael Shearer**
 
 I worked mainly on the view package for this project. In the view, I was mainly responsible for the functionality and design of the game bar and the main gameplay screen. This included designing the game bar layout, setting the screen bounds/background and modifying the reset function in the controller package to work with the reset button on the game bar. I also collaborated with Fiona on a number of parts, such as the update method and the creation of the images used for the game bar. Specifically with the update function, I determined how each of the game bar elements would be checked/updated with the model, as well as how the screen would display/remove active or inactive asteroids respectively.
-For this Readme, I was responsible for adding screenshots and detailing the View portion of the Documentation and Directory Structure.
+For this Readme, I was responsible for adding screenshots, detailing the View portion of the Documentation and Directory Structure and Ways to Extend the Game.
 
 **Lok Ian Vong**
 
