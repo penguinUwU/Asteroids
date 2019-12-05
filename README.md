@@ -85,11 +85,9 @@ If the player’s spaceship collides with an asteroid, the player will lose a li
 
 **View:**
 
-The view package has one class, called the GameView. The purpose of the GameView is to create and design the different elements that make up the game window, as well as update them during gameplay. This includes the game bar displayed at the top of the window, as well as the actual gameplay screen. There are two methods in GameView, the getRoot method and the update method. 
-
-The getRoot method returns a Parent object that is used by the controller to initialize the screen. To modify the UI/background elements, this is the method to use. 
-
-The update method is meant to be run while the game is in progress, and it updates the various UI elements (everything on the game bar), as well as which asteroids are active. It does this by calling methods from the model package to check the state of the game. The update method is called in the main game loop, located in the controller. If anyone wants to change how a UI element is updated, this is the method to modify.
+- The GameView class creates and designs the different elements that make up the game window, as well as updates them during gameplay
+	* getRoot: returns Parent object that is used by the controller to initialize the screen
+	* update: updates the various UI elements (everything on the game bar), as well as which asteroids are active
 
 
 **Controller:**
