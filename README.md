@@ -24,8 +24,7 @@ Space Rocks is a single player game where the player must guide a spaceship thro
 ## <a name="screen"></a>Screenshots
 
 ![Space Rocks gameplay screenshot](https://i.imgur.com/QGqK6Pi.png)
-![Space Rocks gameplay gif](https://penguin.s-ul.eu/B559QL4B)
-
+<img src="https://penguin.s-ul.eu/B559QL4B" alt="Space Rocks gameplay gif" width="491" />
 
 [Back to top](#top)
 
