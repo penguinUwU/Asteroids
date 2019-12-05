@@ -56,6 +56,21 @@ If the player’s spaceship collides with an asteroid, the player will lose a li
 [Back to top](#top)
 
 ## <a name="documen"></a>Documentation and Directory Structure
+### Directory Structure
+- controller package
+	* GameController.java
+    * ButtonPressEventHandler.java
+- model package
+    * Asteroid.java
+    * Bullet.java
+    * GameModel.java
+    * GameObject.java
+    * Player.java
+- view package
+    * GameView.java
+    * oneLife.png 
+    * threeLife.png
+    * twoLife.png
 
 **Model:**
 
