@@ -15,7 +15,9 @@ A recreation of the 1979 game Asteroids created using `Java` and `Javafx` for th
 
 ## <a name="intro"></a>Game Description
 
+Space Rocks is a Java implementation of the 1979 classic arcade game Asteroids by Atari. A simple game that is easy to play but hard to master.
 
+Space Rocks is a single player game where the player must guide a spaceship through an asteroid field. Since the game takes place in space, the player’s spaceship will not decelerate over time. The player is responsible for rotating their ship and thrusting forward at the right time to avoid smashing into an asteroid. The spaceship is equipped with a cannon that allows the player to fire bullets that destroy the asteroids. The goal is to destroy all the asteroids on the screen. 
 
 [Back to top](#top)
 
