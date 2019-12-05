@@ -105,6 +105,25 @@ The classes in the controller package must work together to execute the game loo
 - The class ButtonPressEventHandler handles button presses from the restart game button.
 	* handle: calls the resetGame method in GameController class.
 
+
+## <a name="Extend"></a>How to Extend the Game
+Here are a couple ways to extend our game:
+* Add Sound/Music
+	* Using the Media and MediaPlayer objects in JavaFX, you can add background music 
+
+	You can add this for sound:
+
+```
+	String musicFile = "someSound.mp3";
+	Media sound = new Media(new File(musicFile).toURI().toString());
+	MediaPlayer mediaPlayer = new MediaPlayer(sound);
+	mediaPlayer.play();
+```
+
+
+* Add particle effects
+	* While applying this is complicated, a tutorial can be found [here](http://what-when-how.com/Tutorial/topic-4454j9uv/JavaFX-Special-Effects-42.html)
+
 [Back to top](#top)
 
 ## <a name="Authors"></a>Authors
