@@ -148,3 +148,7 @@ I participated in this project by working on the view package. I worked on some 
 **Mathieu Seah Labbe**
 
 I was responsible for planning the overall structure of our code by creating a UML diagram. I implemented most of the classes and methods inside of the model package. This includes writing the code to detect and resolve collisions, the code modify the player velocity and rotation according to user input, and the code to wrap objects when they drift past the borders of the screen. Inside of the README, I wrote the game description section, game controls and features section, game installation section, directory structure subsection, and model subsection. 
+
+**Yichen Cui**
+
+I mainly worked on the controller component of this game. I was responsible for setting up the game loop, handling the user inputs, resetting the game, and updating the model and view components. I was also responsible for compiling and packaging this game into an executable installer for release. In the README file, I worked on the Documentation and Directory Structure section by documenting the classes and major methods in the controller package.
