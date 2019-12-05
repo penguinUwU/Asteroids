@@ -94,16 +94,16 @@ If the player’s spaceship collides with an asteroid, the player will lose a li
 
 **Controller:**
 
-The `controller` package contains the classes that makes up the Controller component of the MVC design pattern.
-The classes in the `controller` package must work together to execute the game loop, read user inputs, and update the Model and View components in real-time with information such as time and user inputs.
+The controller package contains the classes that makes up the Controller component of the MVC design pattern.
+The classes in the controller package must work together to execute the game loop, read user inputs, and update the Model and View components in real-time with information such as time and user inputs.
 
-- The class `GameController` is the entry point of the game for the users.
-	* `resetGame`: reset all game objects, time variables, and input variables to their default values. If anyone wants to change how the game restarts, this is the method to modify.
-	* `start`: create the game loop, and within the game loop, communicate to the Model and View components. If anyone wants to change how the Model and View components recieve updates, this is the method to modify.
-	* `main`: launches the game.
+- The class GameController is the entry point of the game for the users.
+	* resetGame: reset all game objects, time variables, and input variables to their default values. If anyone wants to change how the game restarts, this is the method to modify.
+	* start: create the game loop, and within the game loop, communicate to the Model and View components. If anyone wants to change how the Model and View components recieve updates, this is the method to modify.
+	* main: launches the game.
 
-- The class `ButtonPressEventHandler` handles button presses from the restart game button.
-	* `handle`: calls the `resetGame` method in `GameController` class.
+- The class ButtonPressEventHandler handles button presses from the restart game button.
+	* handle: calls the resetGame method in GameController class.
 
 [Back to top](#top)
 
