@@ -169,4 +169,4 @@ I was responsible for planning the overall structure of our code by creating a U
 
 **Yichen Cui**
 
-I mainly worked on the controller component of this game. I was responsible for setting up the game loop, handling the user inputs, resetting the game, and updating the model and view components. I was also responsible for compiling and packaging this game into an executable installer for release. In the README file, I worked on the Documentation and Directory Structure section by documenting the classes and major methods in the controller package.
+I mainly worked on the controller component of this game. I was responsible for setting up the game loop, handling the user inputs, resetting the game, and updating the model and view components. I was also responsible for compiling and packaging this game into an executable installer for release. In the README file, I worked on the Documentation and Directory Structure section and the Screenshots section. I documented the classes and major methods in the controller package, and added a gif of the gameplay.
