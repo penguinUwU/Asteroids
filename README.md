@@ -84,7 +84,12 @@ The update method is meant to be run while the game is in progress, and it updat
 
 
 **Controller:**
+The controller package contains the classes that makes up the Controller component of the MVC design pattern.
+The classes in the controller package must work together to execute the game loop, read user inputs, and update the Model and View components in real-time with information such as time and user inputs.
 
+The purpose of the ButtonPressEventHandler class is handle button presses from the restart game button. Once the user presses the restart button, the game will instantly reset all data, and restart the game loop.
+
+The purpose of the GameController class is to be the entry point of the game for the users. It loads the game, starts the game loop, and updates the game with user inputs.
 
 [Back to top](#top)
 
