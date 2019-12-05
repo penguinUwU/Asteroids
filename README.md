@@ -113,7 +113,7 @@ The classes in the `controller` package must work together to execute the game l
 - Michael Shearer
 - Yichen Cui
 - Mathieu Seah Labbe
-- Fiona Vong
+- Lok Ian Vong (Fiona)
 
 [Back to top](#top)
 
